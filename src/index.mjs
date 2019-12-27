@@ -41,3 +41,9 @@ export function normalizeServices(services) {
 
   return services;
 }
+
+
+export function coordsFor(services, exp, current) {
+  const endpoint = endpointFor(services, exp);
+  return `V${endpoint.service.y + endpoint.y - current.service.y - current.y}H${endpoint.x}`;
+}
