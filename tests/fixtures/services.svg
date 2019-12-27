@@ -1,0 +1,85 @@
+<svg viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg">
+
+
+    <g class="services">
+
+        <g class="service svelte-6ossac" transform="translate(10,0)">
+
+            <rect x="0" y="0" width="100" height="51" fill="green" class="svelte-6ossac"></rect>
+            <text x="8" y="22">logger</text>
+            <circle cx="90" cy="15" r="5"></circle>
+            <circle cx="90" cy="27" r="5"></circle>
+            <circle cx="90" cy="39" r="5"></circle>
+        </g>
+        <g class="service svelte-6ossac" transform="translate(10,61)">
+
+            <rect x="0" y="0" width="100" height="51" fill="green" class="svelte-6ossac"></rect>
+            <text x="8" y="22">config</text>
+            <circle cx="90" cy="15" r="5"></circle>
+            <circle cx="90" cy="27" r="5"></circle>
+            <circle cx="90" cy="39" r="5"></circle>
+
+            <path d="M90 15H120V39H90" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></path>
+
+        </g>
+        <g class="service svelte-6ossac" transform="translate(10,122)">
+            <rect x="0" y="0" width="100" height="51" fill="green" class="svelte-6ossac"></rect>
+            <text x="8" y="22">systemd</text>
+            <circle cx="90" cy="15" r="5"></circle>
+            <circle cx="90" cy="27" r="5"></circle>
+            <circle cx="90" cy="39" r="5"></circle>
+        </g>
+        <g class="service svelte-6ossac" transform="translate(10,183)">
+            <rect x="0" y="0" width="100" height="135" fill="green" class="svelte-6ossac"></rect>
+            <text x="8" y="22">http</text>
+            <circle cx="90" cy="15" r="5"></circle>
+            <circle cx="90" cy="27" r="5"></circle>
+            <circle cx="90" cy="39" r="5"></circle>
+            <circle cx="90" cy="51" r="5"></circle>
+            <circle cx="90" cy="63" r="5"></circle>
+            <circle cx="90" cy="75" r="5"></circle>
+            <circle cx="90" cy="87" r="5"></circle>
+            <circle cx="90" cy="99" r="5"></circle>
+            <circle cx="90" cy="111" r="5"></circle>
+            <circle cx="90" cy="123" r="5"></circle>
+        </g>
+        <g class="service svelte-6ossac" transform="translate(10,328)">
+            <rect x="0" y="0" width="100" height="75" fill="green" class="svelte-6ossac"></rect>
+            <text x="8" y="22">auth</text>
+            <circle cx="90" cy="15" r="5"></circle>
+            <circle cx="90" cy="27" r="5"></circle>
+            <circle cx="90" cy="39" r="5"></circle>
+            <circle cx="90" cy="51" r="5"></circle>
+            <circle cx="90" cy="63" r="5"></circle>
+        </g>
+        <g class="service svelte-6ossac" transform="translate(10,413)">
+            <rect x="0" y="0" width="100" height="75" fill="green" class="svelte-6ossac"></rect>
+            <text x="8" y="22">ldap</text>
+            <circle cx="90" cy="15" r="5"></circle>
+            <circle cx="90" cy="27" r="5"></circle>
+            <circle cx="90" cy="39" r="5"></circle>
+            <circle cx="90" cy="51" r="5"></circle>
+            <circle cx="90" cy="63" r="5"></circle>
+        </g>
+        <g class="service svelte-6ossac" transform="translate(10,498)">
+            <rect x="0" y="0" width="100" height="111" fill="green" class="svelte-6ossac"></rect>
+            <text x="8" y="22">health</text>
+            <circle cx="90" cy="15" r="5"></circle>
+            <circle cx="90" cy="27" r="5"></circle>
+            <circle cx="90" cy="39" r="5"></circle>
+            <circle cx="90" cy="51" r="5"></circle>
+            <circle cx="90" cy="63" r="5"></circle>
+            <circle cx="90" cy="75" r="5"></circle>
+            <circle cx="90" cy="87" r="5"></circle>
+            <circle cx="90" cy="99" r="5"></circle>
+        </g>
+        <g class="service svelte-6ossac" transform="translate(10,619)">
+            <rect x="0" y="0" width="100" height="63" fill="green" class="svelte-6ossac"></rect>
+            <text x="8" y="22">admin</text>
+            <circle cx="90" cy="15" r="5"></circle>
+            <circle cx="90" cy="27" r="5"></circle>
+            <circle cx="90" cy="39" r="5"></circle>
+            <circle cx="90" cy="51" r="5"></circle>
+        </g>
+    </g>
+</svg>
