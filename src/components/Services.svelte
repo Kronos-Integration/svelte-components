@@ -1,61 +1,13 @@
 <script>
-  import { session } from "../main.mjs";
-  import api from "consts:api";
+  import {endpointFor} from "../../index.mjs";
+
+  let services;
 
   const sh = 50;
   const sw = 100;
 
-  async function fetchServices() {
-    return fetch(`${api}/services`, {
-      headers: session.authorizationHeader
-    })
-      .then(response => response.json())
-      .then(json => {
-        let cx = 110;
-        let y = 0;
-        for (const service of Object.values(json)) {
-          service.x = 10;
-          service.y = y;
-
-          let ey = 10 + 20 + 5;
-          for (const [name, endpoint] of Object.entries(service.endpoints)) {
-            endpoint.name = name;
-            endpoint.service = service;
-            endpoint.x = sw - 10;
-            endpoint.y = ey;
-            if (endpoint.connected === undefined) {
-              endpoint.connected = [];
-            } else if (!Array.isArray(endpoint.connected)) {
-              endpoint.connected = [endpoint.connected];
-            }
-            endpoint.connected = endpoint.connected.map(c => {
-              cx = cx + 5;
-
-              return { x: cx, target: c };
-            });
-            ey += 12;
-          }
-
-          service.w = sw;
-          service.h = ey > sh ? ey : sh;
-
-          y += service.h + 10;
-        }
-
-        return json;
-      });
-  }
-
   let width = 400;
   let height = 900;
-
-  function endpointFor(services, exp) {
-    const m = exp.match(/service\((\w+)\)\.(.+)/);
-
-    if (m) {
-      return services[m[1]].endpoints[m[2]];
-    }
-  }
 
   function coordsFor(services, exp, current) {
     const endpoint = endpointFor(services, exp);
@@ -89,7 +41,7 @@
   }
 </style>
 
-{#await fetchServices()}
+{#await services}
   <p>...fetching</p>
 {:then services}
   <svg viewbox="0 0 {width} {height}">
