@@ -1,12 +1,13 @@
 <script>
   import { endpointFor, coordsFor } from "../index.mjs";
 
-  let services;
+  let services = {
+    s1: {
+      endpoints: { e1: {connected:[]}, e2: {connected:[]} }
+    }
+  };
   let width = 400;
   let height = 900;
-
-  const sh = 50;
-  const sw = 100;
 </script>
 
 <style>

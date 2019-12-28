@@ -1,13 +1,17 @@
 
-  export function endpointFor(services, exp) {
-    const m = exp.match(/service\((\w+)\)\.(.+)/);
+export function endpointFor(services, exp) {
+  const m = exp.match(/service\((\w+)\)\.(.+)/);
 
-    if (m) {
-      return services[m[1]].endpoints[m[2]];
-    }
+  if (m) {
+    return services[m[1]].endpoints[m[2]];
   }
+}
 
 export function normalizeServices(services) {
+
+  const sw = 100;
+  const sh = 50;
+
   let cx = 110;
   let y = 0;
   for (const service of Object.values(services)) {
@@ -42,8 +46,9 @@ export function normalizeServices(services) {
   return services;
 }
 
-
 export function coordsFor(services, exp, current) {
   const endpoint = endpointFor(services, exp);
-  return `V${endpoint.service.y + endpoint.y - current.service.y - current.y}H${endpoint.x}`;
+  return `V${endpoint.service.y + endpoint.y - current.service.y - current.y}H${
+    endpoint.x
+  }`;
 }

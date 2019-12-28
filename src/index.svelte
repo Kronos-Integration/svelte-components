@@ -1,6 +1,5 @@
 <script context="module">
-  import Services from "./components/Services.svelte";
+  import ServiceCanvas from "./components/ServiceCanvas.svelte";
   import { normalizeServices } from "./index.mjs";
-
-  export { Services, normalizeServices };
+  export { ServiceCanvas, normalizeServices };
 </script>
