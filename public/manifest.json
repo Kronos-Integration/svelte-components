@@ -1,0 +1,10 @@
+{
+  "name": "@kronos-integration/svelte-components",
+  "description": "Svelte components for Kronos",
+  "icons": [
+    {
+      "src": "facicon.ico",
+      "sizes": "16x16"
+    }
+  ]
+}
