@@ -3,6 +3,7 @@
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![minified size](https://badgen.net/bundlephobia/min/@kronos-integration/svelte-components)](https://bundlephobia.com/result?p=@kronos-integration/svelte-components)
 [![downloads](http://img.shields.io/npm/dm/@kronos-integration/svelte-components.svg?style=flat-square)](https://npmjs.org/package/@kronos-integration/svelte-components)
+[![GitHub Issues](https://img.shields.io/github/issues/Kronos-Integration/svelte-components.svg?style=flat-square)](https://github.com/Kronos-Integration/svelte-components/issues)
 [![Build Status](https://secure.travis-ci.org/Kronos-Integration/svelte-components.png)](http://travis-ci.org/Kronos-Integration/svelte-components)
 [![Greenkeeper](https://badges.greenkeeper.io/Kronos-Integration/svelte-components.svg)](https://greenkeeper.io/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/Kronos-Integration/svelte-components)
