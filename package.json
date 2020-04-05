@@ -38,7 +38,7 @@
   "homepage": "https://github.com/Kronos-Integration/svelte-components#readme",
   "template": {
     "inheritFrom": [
-      "arlac77/template-svelte",
+      "arlac77/template-svelte-compnent",
       "arlac77/template-github"
     ]
   }
