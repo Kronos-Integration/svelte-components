@@ -5,9 +5,9 @@
   "svelte": "src/index.svelte",
   "description": "Svelte components for Kronos",
   "keywords": [
+    "component",
     "svelte",
-    "web",
-    "component"
+    "web"
   ],
   "license": "BSD-2-Clause",
   "scripts": {
