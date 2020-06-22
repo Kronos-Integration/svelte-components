@@ -40,5 +40,8 @@
       "arlac77/template-svelte-component",
       "arlac77/template-github"
     ]
+  },
+  "dependencies": {
+    "@kronos-integration/endpoint": "^9.0.1"
   }
 }
