@@ -1,4 +1,6 @@
 
+import { Endpoint } from "@kronos-integration/endpoint";
+
 export function endpointFor(services, exp) {
   const m = exp.match(/service\((\w+)\)\.(.+)/);
 
