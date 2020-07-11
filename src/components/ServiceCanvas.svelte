@@ -1,11 +1,5 @@
 <script>
-  import { endpointFor, coordsFor } from "../index.mjs";
-
-  let services = {
-    s1: {
-      endpoints: { e1: {connected:[]}, e2: {connected:[]} }
-    }
-  };
+  export let services;
   let width = 400;
   let height = 900;
 </script>
@@ -57,7 +51,7 @@
             {#each endpoint.connected as connected}
               <path
                 class="connection"
-                d="M60 0H{connected.x}{coordsFor(services, connected.target, endpoint)}" />
+                d="M60 0H{connected.x}{services.coordsFor(connected.target, endpoint)}" />
             {/each}
           </g>
         {/each}

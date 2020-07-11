@@ -1,16 +1,7 @@
 
-import { Endpoint } from "@kronos-integration/endpoint";
 
-export function endpointFor(services, exp) {
-  const m = exp.match(/service\((\w+)\)\.(.+)/);
-
-  if (m) {
-    return services[m[1]].endpoints[m[2]];
-  }
-}
-
+/*
 export function normalizeServices(services) {
-
   const sw = 100;
   const sh = 50;
 
@@ -44,13 +35,5 @@ export function normalizeServices(services) {
 
     y += service.h + 10;
   }
-
-  return services;
 }
-
-export function coordsFor(services, exp, current) {
-  const endpoint = endpointFor(services, exp);
-  return `V${endpoint.service.y + endpoint.y - current.service.y - current.y}H${
-    endpoint.x
-  }`;
-}
+*/

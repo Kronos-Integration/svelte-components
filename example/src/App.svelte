@@ -1,11 +1,19 @@
 <script>
-  import { ServiceCanvas, normalizeServices } from "../../src/index.svelte";
+  import { ServiceCanvas, Services } from "../../src/index.svelte";
+  import { data } from "./data.mjs";
 
-  let services = normalizeServices({
-    s1: {
-      endpoints: { e1: {}, e2: {} }
-    }
-  });
+  const services = Services.initialize(data);
 </script>
 
-<ServiceCanvas services={services} />
+<ul>
+  {#each services.services as service}
+    <li>
+      {service.name} ({service.type})
+      <ul>
+        {#each Object.values(service.endpoints) as endpoint}
+          <li>{endpoint.name}</li>
+        {/each}
+      </ul>
+    </li>
+  {/each}
+</ul>
