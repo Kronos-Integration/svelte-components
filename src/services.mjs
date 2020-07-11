@@ -29,7 +29,7 @@ export class Services {
   }
 
   endpointFor(exp) {
-    const m = exp.match(/service\((\w+)\)\.(.+)/);
+    const m = exp.match(/service\((\w+)\)\.([\w\.\-\/\:]+)/);
 
     if (m) {
       const service = this.service(m[1]);
