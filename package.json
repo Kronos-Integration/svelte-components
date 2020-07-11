@@ -17,7 +17,7 @@
     "lint": "documentation lint ./src/index.mjs"
   },
   "dependencies": {
-    "@kronos-integration/endpoint": "^9.0.1",
+    "@kronos-integration/endpoint": "^9.0.3",
     "svelte-guard-history-router": "^2.15.0"
   },
   "devDependencies": {
