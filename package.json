@@ -1,6 +1,9 @@
 {
   "name": "@kronos-integration/svelte-components",
   "version": "0.0.0-semantic-release",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./src/index.mjs",
   "svelte": "./src/index.svelte",
   "description": "Svelte components for Kronos",
