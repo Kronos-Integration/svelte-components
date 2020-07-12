@@ -24,7 +24,6 @@ export class Services {
       let ey = 10 + 20 + 5;
 
       for (const [en, eo] of Object.entries(serviceDetails.endpoints)) {
-        eo.interceptors = [];
         const endpoint = new Endpoint(en, service, eo);
 
         service.endpoints[en] = endpoint;
