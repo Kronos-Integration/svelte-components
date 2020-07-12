@@ -7,7 +7,7 @@
 
 <ul>
   {#each services.services as service}
-    <li>
+    <li class="service">
       {service.name} ({service.type})
       <ul>
         {#each Object.values(service.endpoints) as endpoint}
@@ -17,3 +17,5 @@
     </li>
   {/each}
 </ul>
+
+<ServiceCanvas {services} />

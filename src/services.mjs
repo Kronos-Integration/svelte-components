@@ -5,20 +5,53 @@ export class Services {
   static initialize(json) {
     const services = new Services();
 
+    const sh = 50;
+    const sw = 100;
+
+    let cx = 110;
+    let y = 0;
+
     services.services = [];
 
     for (const [name, serviceDetails] of Object.entries(json)) {
       const service = new Service(name, serviceDetails);
-      services.services.push(service);
-    }
 
-    for (const [name, serviceDetails] of Object.entries(json)) {
-      const service = services.service(name, );
+      services.services.push(service);
+
+      service.x = 10;
+      service.y = y;
+
+      let ey = 10 + 20 + 5;
+
       for (const [en, eo] of Object.entries(serviceDetails.endpoints)) {
         eo.interceptors = [];
-        const ep = new Endpoint(en, service, eo);
-        service.endpoints[en] = ep;
+        const endpoint = new Endpoint(en, service, eo);
+
+        service.endpoints[en] = endpoint;
+
+        endpoint.x = sw - 10;
+        endpoint.y = ey;
+
+        let connected = eo.connected;
+
+        if (connected === undefined) {
+          connected = [];
+        } else if (!Array.isArray(connected)) {
+          connected = [connected];
+        }
+
+        endpoint.connected = connected.map(c => {
+          cx = cx + 5;
+
+          return { x: cx, target: c };
+        });
+        ey += 12;
       }
+
+      service.w = sw;
+      service.h = ey > sh ? ey : sh;
+
+      y += service.h + 10;
     }
 
     return services;
@@ -39,8 +72,8 @@ export class Services {
 
   coordsFor(exp, current) {
     const endpoint = this.endpointFor(exp);
-    return `V${
-      endpoint.service.y + endpoint.y - current.service.y - current.y
-    }H${endpoint.x}`;
+    return `V${endpoint.owner.y + endpoint.y - current.owner.y - current.y}H${
+      endpoint.x
+    }`;
   }
 }

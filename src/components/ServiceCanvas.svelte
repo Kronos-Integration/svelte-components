@@ -2,6 +2,14 @@
   export let services;
   let width = 400;
   let height = 900;
+
+  const stateColor = {
+    running: "green",
+    starting: "green",
+    stopped: "gray",
+    stoppin: "gray",
+    failed: "red"
+  };
 </script>
 
 <style>
@@ -32,14 +40,14 @@
 
 <svg viewbox="0 0 {width} {height}">
   <g class="services">
-    {#each Object.values(services) as service}
+    {#each services.services as service}
       <g class="service" transform="translate({service.x},{service.y})">
         <rect
           x="0"
           y="0"
           width={service.w}
           height={service.h}
-          fill={service.state === 'running' ? 'green' : 'red'} />
+          fill={stateColor[service.state]} />
         <text x="8" y="22">{service.name}</text>
         {#each Object.values(service.endpoints) as endpoint}
           <g
