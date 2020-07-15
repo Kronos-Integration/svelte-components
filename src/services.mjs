@@ -6,7 +6,7 @@ export class Services {
     const services = new Services();
 
     const sh = 50;
-    const sw = 100;
+    const sw = 140;
 
     let cx = 110;
     let y = 0;

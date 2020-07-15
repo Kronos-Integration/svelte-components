@@ -1,7 +1,7 @@
 <script>
   export let services;
-  let width = 400;
-  let height = 900;
+  let width = 500;
+  let height = 1200;
 
   const stateColor = {
     running: "green",
