@@ -29,12 +29,27 @@
     overflow: visible;
   }
 
+  .endpoint:hover {
+    stroke: red;
+  }
+
+  .interceptor {
+  }
+
+  .interceptor:hover {
+    stroke: red;
+  }
+
   .connection {
     fill: none;
     stroke: black;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-miterlimit: 10;
+  }
+
+  .connection:hover {
+    stroke: red;
   }
 </style>
 
@@ -56,6 +71,10 @@
 
             <text x={52} y={3}>{endpoint.name}</text>
             <circle cx="60" cy="0" r="5" />
+
+            {#each endpoint.interceptors as interceptor}
+              <circle class="interceptor" cx="72" cy="0" r="5" />
+            {/each}
             {#each endpoint.connected as connected}
               <path
                 class="connection"

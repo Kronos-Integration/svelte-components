@@ -1,4 +1,6 @@
 import { Endpoint } from "@kronos-integration/endpoint";
+import { Interceptor } from "@kronos-integration/interceptor";
+
 import { Service } from "./service.mjs";
 
 export class Services {
@@ -14,7 +16,7 @@ export class Services {
     services.services = [];
 
     for (const [name, serviceDetails] of Object.entries(json)) {
-      const service = new Service(name, serviceDetails);
+      const service = new Service(name, serviceDetails, services);
 
       services.services.push(service);
 
@@ -56,8 +58,13 @@ export class Services {
     return services;
   }
 
+
   service(name) {
     return this.services.find(s => s.name === name);
+  }
+
+  instantiateInterceptor(options) {
+    return new Interceptor(typeof options === "string" ? {} : options);
   }
 
   endpointFor(exp) {

@@ -1,8 +1,8 @@
-import { Interceptor } from "@kronos-integration/interceptor";
 
 export class Service {
-  constructor(name, options) {
+  constructor(name, options, owner) {
     this.name = name;
+    this.owner = owner;
     this.endpoints = {};
 
     for (const n of ["type", "state", "logLevel"]) {
@@ -11,6 +11,6 @@ export class Service {
   }
 
   instantiateInterceptor(options) {
-    return new Interceptor(typeof options === "string" ? {} : options);
+    return this.owner.instantiateInterceptor(options);
   }
 }
