@@ -7,4 +7,9 @@ export class Service {
       this[n] = options[n];
     }
   }
+
+  instantiateInterceptor(def)
+  {
+
+  } 
 }
