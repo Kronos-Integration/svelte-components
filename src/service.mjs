@@ -7,9 +7,10 @@ export class Service {
       this[n] = options[n];
     }
   }
-
-  instantiateInterceptor(def)
+  
+  instantiateInterceptor(options)
   {
-
-  } 
+    console.log(options);
+  }
 }
+
