@@ -11,7 +11,9 @@
       {service.name} ({service.type})
       <ul>
         {#each Object.values(service.endpoints) as endpoint}
-          <li>{endpoint.name}</li>
+          <li>{endpoint.name}
+            {endpoint.interceptors}
+          </li>
         {/each}
       </ul>
     </li>

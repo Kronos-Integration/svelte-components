@@ -1,6 +1,7 @@
 <script>
   import { Route } from "svelte-guard-history-router";
   import { Endpoint } from "@kronos-integration/endpoint";
+  import { Interceptor } from "@kronos-integration/interceptor";
   import { Service } from "./service.mjs";
   import ServicesPage from "./ServicesPage.svelte";
 
@@ -16,7 +17,14 @@
       <Route
         path="/:endpoint"
         objectInstance={Endpoint}
-        propertyMapping={{ endpoint: 'name' }} />
+        propertyMapping={{ endpoint: 'name' }}>
+        <Route path="interceptor">
+          <Route
+            path="/:interceptor"
+            objectInstance={Interceptor}
+            propertyMapping={{ interceptor: 'type' }} />
+        </Route>
+      </Route>
     </Route>
   </Route>
 </Route>

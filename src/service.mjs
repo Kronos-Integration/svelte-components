@@ -1,3 +1,5 @@
+import { Interceptor } from "@kronos-integration/interceptor";
+
 export class Service {
   constructor(name, options) {
     this.name = name;
@@ -7,10 +9,8 @@ export class Service {
       this[n] = options[n];
     }
   }
-  
-  instantiateInterceptor(options)
-  {
-    console.log(options);
+
+  instantiateInterceptor(options) {
+    return new Interceptor(typeof options === "string" ? {} : options);
   }
 }
-
