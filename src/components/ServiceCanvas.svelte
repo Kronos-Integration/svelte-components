@@ -29,6 +29,10 @@
     overflow: visible;
   }
 
+  .open {
+    fill: green;
+  }
+
   .endpoint:hover {
     stroke: red;
   }
@@ -66,11 +70,15 @@
         <text x="8" y="22">{service.name}</text>
         {#each Object.values(service.endpoints) as endpoint}
           <g
-            class="endpoint"
+            class="{endpoint.isOpen ? 'endpoint open' : 'endpoint'}"
             transform="translate({endpoint.x - 60},{endpoint.y})">
 
             <text x={52} y={3}>{endpoint.name}</text>
-            <circle cx="60" cy="0" r="5" />
+            {#if endpoint.isIn}
+              <rect x="60" y="0" w="10" h="10" />
+            {:else}
+              <circle cx="60" cy="0" r="5" />
+            {/if}
 
             {#each endpoint.interceptors as interceptor}
               <circle class="interceptor" cx="72" cy="0" r="5" />
