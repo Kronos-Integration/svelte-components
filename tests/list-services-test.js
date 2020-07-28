@@ -10,5 +10,5 @@ fixture`Getting Started`.page`${base}/index.html`;
 test("list services", async t => {
   const service = Selector(".service");
 
-  await t.expect(service.innerText).contains("logger (systemd-logger)");
+  await t.expect(service.innerText).contains("logger (logger)");
 });
