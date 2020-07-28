@@ -1,51 +1,56 @@
-import { Endpoint } from "@kronos-integration/endpoint";
-import { Interceptor } from "@kronos-integration/interceptor";
+import {
+  Service,
+  ServiceProviderMixin,
+  InitializationContext
+} from "@kronos-integration/service";
 
-import { Service } from "./service.mjs";
+globalThis.process = { env: {} };
+globalThis.Buffer = class Buffer {};
 
-export class Services {
-  static initialize(json) {
-    const services = new Services();
+class MyInitializationContext extends InitializationContext {
+  async getServiceFactory(type) {
+    const f = await super.getServiceFactory(type);
+
+    if (!f) {
+      return Service;
+    }
+  }
+
+  connectEndpoint(endpoint, connected) {
+    try {
+      super.connectEndpoint(endpoint, connected);
+    } catch (e) {}
+  }
+}
+
+export class Services extends ServiceProviderMixin(Service) {
+  static async initialize(json) {
+    const services = new Services(
+      {},
+      new MyInitializationContext(undefined, { waitForFactories: false })
+    );
+
+    await services.declareServices(json);
 
     const sh = 50;
     const sw = 140;
-
     let cx = 110;
     let y = 0;
 
-    services.services = [];
-
-    for (const [name, serviceDetails] of Object.entries(json)) {
-      const service = new Service(name, serviceDetails, services);
-
-      services.services.push(service);
-
+    for (const service of Object.values(services.services)) {
       service.x = 10;
       service.y = y;
-
       let ey = 10 + 20 + 5;
 
-      for (const [en, eo] of Object.entries(serviceDetails.endpoints)) {
-        const endpoint = new Endpoint(en, service, eo);
-
-        service.endpoints[en] = endpoint;
-
+      for (const endpoint of Object.values(service.endpoints)) {
         endpoint.x = sw - 10;
         endpoint.y = ey;
 
-        let connected = eo.connected;
-
-        if (connected === undefined) {
-          connected = [];
-        } else if (!Array.isArray(connected)) {
-          connected = [connected];
+        for (const connection of endpoint.connections()) {
+          cx = cx + 5;
+          connection.rx = cx;
         }
 
-        endpoint.connected = connected.map(c => {
-          cx = cx + 5;
-
-          return { x: cx, target: c };
-        });
         ey += 12;
       }
 
@@ -58,26 +63,7 @@ export class Services {
     return services;
   }
 
-
-  service(name) {
-    return this.services.find(s => s.name === name);
-  }
-
-  instantiateInterceptor(options) {
-    return new Interceptor(typeof options === "string" ? {} : options);
-  }
-
-  endpointFor(exp) {
-    const m = exp.match(/service\((\w+)\)\.([\w\.\-\/\:]+)/);
-
-    if (m) {
-      const service = this.service(m[1]);
-      return service.endpoints[m[2]];
-    }
-  }
-
-  coordsFor(exp, current) {
-    const endpoint = this.endpointFor(exp);
+  coordsFor(endpoint, current) {
     return `V${endpoint.owner.y + endpoint.y - current.owner.y - current.y}H${
       endpoint.x
     }`;

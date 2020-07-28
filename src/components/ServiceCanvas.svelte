@@ -1,7 +1,7 @@
 <script>
   export let services;
   let width = 500;
-  let height = 1200;
+  let height = 1400;
 
   const stateColor = {
     running: "green",
@@ -59,7 +59,7 @@
 
 <svg viewbox="0 0 {width} {height}">
   <g class="services">
-    {#each services.services as service}
+    {#each Object.values(services.services) as service}
       <g class="service" transform="translate({service.x},{service.y})">
         <rect
           x="0"
@@ -83,10 +83,10 @@
             {#each endpoint.interceptors as interceptor}
               <circle class="interceptor" cx="72" cy="0" r="5" />
             {/each}
-            {#each endpoint.connected as connected}
+            {#each [...endpoint.connections()] as connected}
               <path
                 class="connection"
-                d="M60 0H{connected.x}{services.coordsFor(connected.target, endpoint)}" />
+                d="M60 0H{connected.rx}{services.coordsFor(connected, endpoint)}" />
             {/each}
           </g>
         {/each}
