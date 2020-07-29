@@ -7,13 +7,17 @@ import {
 globalThis.process = { env: {} };
 globalThis.Buffer = class Buffer {};
 
-class MyInitializationContext extends InitializationContext {
+class NoneWaitingInitializationContext extends InitializationContext {
   async getServiceFactory(type) {
     const f = await super.getServiceFactory(type);
 
     if (!f) {
       return Service;
     }
+  }
+
+  get waitForFactories() {
+    return false;
   }
 
   connectEndpoint(endpoint, connected) {
@@ -25,10 +29,7 @@ class MyInitializationContext extends InitializationContext {
 
 export class Services extends ServiceProviderMixin(Service) {
   static async initialize(json) {
-    const services = new Services(
-      {},
-      new MyInitializationContext(undefined, { waitForFactories: false })
-    );
+    const services = new Services({}, new NoneWaitingInitializationContext());
 
     await services.declareServices(json);
 
