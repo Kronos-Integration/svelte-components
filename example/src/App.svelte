@@ -9,7 +9,7 @@
   {:then services}
     {#each Object.values(services.services) as service}
       <li class="service">
-        {service.name} ({service.type})
+        {service.name} ({service.type}) {service.state}
         <ul>
           {#each Object.values(service.endpoints) as endpoint}
             <li>{endpoint.name} {endpoint.interceptors}</li>

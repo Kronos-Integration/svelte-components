@@ -7,12 +7,27 @@ import {
 globalThis.process = { env: {} };
 globalThis.Buffer = class Buffer {};
 
+class TypedService extends Service {
+  constructor(config, ic) {
+    super(config, ic);
+    this.config = config;
+  }
+
+  get type() {
+    return this.config.type;
+  }
+
+  get state() {
+    return this.config.state;
+  }
+}
+
 class NoneWaitingInitializationContext extends InitializationContext {
   async getServiceFactory(type) {
     const f = await super.getServiceFactory(type);
 
     if (!f) {
-      return Service;
+      return TypedService;
     }
   }
 
@@ -62,11 +77,5 @@ export class Services extends ServiceProviderMixin(Service) {
     }
 
     return services;
-  }
-
-  coordsFor(endpoint, current) {
-    return `V${endpoint.owner.y + endpoint.y - current.owner.y - current.y}H${
-      endpoint.x
-    }`;
   }
 }
