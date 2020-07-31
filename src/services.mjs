@@ -78,4 +78,10 @@ export class Services extends ServiceProviderMixin(Service) {
 
     return services;
   }
+  
+  instantiateInterceptor(def) {
+    const interceptor = super.instantiateInterceptor(def);
+    console.log(interceptor,def);  
+    return interceptor;
+  }
 }
