@@ -3,6 +3,9 @@ import {
   ServiceProviderMixin,
   InitializationContext
 } from "@kronos-integration/service";
+import {
+  Interceptor
+} from "@kronos-integration/interceptor";
 
 globalThis.process = { env: {} };
 globalThis.Buffer = class Buffer {};
@@ -78,10 +81,12 @@ export class Services extends ServiceProviderMixin(Service) {
 
     return services;
   }
-  
+
   instantiateInterceptor(def) {
     const interceptor = super.instantiateInterceptor(def);
-    console.log(interceptor,def);  
-    return interceptor;
+    if(interceptor) {
+      return interceptor;
+    }
+    return new Interceptor(def);
   }
 }
