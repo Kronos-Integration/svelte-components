@@ -22,7 +22,7 @@
     "svelte-guard-history-router": "^2.24.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "documentation": "^13.0.2",
     "rollup": "^2.23.1",
