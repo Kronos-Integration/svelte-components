@@ -6,6 +6,10 @@
   function connectionPath(from, to) {
     return `M60 0H${from.rx}V${(to.owner.y + to.y) - (from.owner.y + from.y)}H60`;
   }
+
+  function clickService(event) {
+    console.log(event);
+  }
 </script>
 
 <style>
@@ -74,7 +78,7 @@
 <svg viewbox="0 0 {width} {height}">
   <g class="services">
     {#each Object.values(services.services) as service}
-      <g class="service" transform="translate({service.x},{service.y})">
+      <g class="service" transform="translate({service.x},{service.y})" on:click={clickService}>
         <rect
           class={service.state}
           x="0"
