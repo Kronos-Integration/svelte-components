@@ -3,7 +3,7 @@ export const data = {
     type: "systemd-logger",
     name: "logger",
     state: "running",
-    logLevel: "trace",
+    logLevel: "info",
     endpoints: {
       log: {
         in: true,
@@ -37,7 +37,7 @@ export const data = {
     type: "systemd-config",
     name: "config",
     state: "running",
-    logLevel: "trace",
+    logLevel: "info",
     endpoints: {
       log: {
         out: true,
@@ -57,8 +57,8 @@ export const data = {
   systemd: {
     type: "systemd",
     name: "systemd",
-    state: "starting",
-    logLevel: "trace",
+    state: "running",
+    logLevel: "info",
     endpoints: {
       log: {
         out: true,
@@ -79,7 +79,7 @@ export const data = {
     type: "http",
     name: "http",
     state: "running",
-    logLevel: "trace",
+    logLevel: "info",
     endpoints: {
       log: {
         out: true,
@@ -181,12 +181,12 @@ export const data = {
           }
         ]
       },
-      "/systemctl/status": {
+      "/systemctl/machines": {
         method: "GET",
-        path: "/systemctl/status",
+        path: "/systemctl/machines",
         out: true,
         open: true,
-        connected: "service(systemctl).status",
+        connected: "service(systemctl).machines",
         interceptors: [
           {
             type: "ctx-jwt-verify"
@@ -196,9 +196,84 @@ export const data = {
           }
         ]
       },
-      "/systemctl/start/:unit": {
+      "/systemctl/timers": {
         method: "GET",
-        path: "/systemctl/start/:unit",
+        path: "/systemctl/timers",
+        out: true,
+        open: true,
+        connected: "service(systemctl).timers",
+        interceptors: [
+          {
+            type: "ctx-jwt-verify"
+          },
+          {
+            type: "ctx"
+          }
+        ]
+      },
+      "/systemctl/sockets": {
+        method: "GET",
+        path: "/systemctl/sockets",
+        out: true,
+        open: true,
+        connected: "service(systemctl).sockets",
+        interceptors: [
+          {
+            type: "ctx-jwt-verify"
+          },
+          {
+            type: "ctx"
+          }
+        ]
+      },
+      "/systemctl/unit": {
+        method: "GET",
+        path: "/systemctl/unit",
+        out: true,
+        open: true,
+        connected: "service(systemctl).units",
+        interceptors: [
+          {
+            type: "ctx-jwt-verify"
+          },
+          {
+            type: "ctx"
+          }
+        ]
+      },
+      "/systemctl/unit/:unit": {
+        method: "GET",
+        path: "/systemctl/unit/:unit",
+        out: true,
+        open: true,
+        connected: "service(systemctl).unit",
+        interceptors: [
+          {
+            type: "ctx-jwt-verify"
+          },
+          {
+            type: "ctx"
+          }
+        ]
+      },
+      "/systemctl/unit/:unit/files": {
+        method: "GET",
+        path: "/systemctl/unit/:unit/files",
+        out: true,
+        open: true,
+        connected: "service(systemctl).files",
+        interceptors: [
+          {
+            type: "ctx-jwt-verify"
+          },
+          {
+            type: "ctx"
+          }
+        ]
+      },
+      "/systemctl/unit/:unit/start": {
+        method: "POST",
+        path: "/systemctl/unit/:unit/start",
         out: true,
         open: true,
         connected: "service(systemctl).start",
@@ -211,9 +286,9 @@ export const data = {
           }
         ]
       },
-      "/systemctl/stop/:unit": {
-        method: "GET",
-        path: "/systemctl/stop/:unit",
+      "/systemctl/unit/:unit/stop": {
+        method: "POST",
+        path: "/systemctl/unit/:unit/stop",
         out: true,
         open: true,
         connected: "service(systemctl).stop",
@@ -226,9 +301,9 @@ export const data = {
           }
         ]
       },
-      "/systemctl/restart/:unit": {
-        method: "GET",
-        path: "/systemctl/restart/:unit",
+      "/systemctl/unit/:unit/restart": {
+        method: "POST",
+        path: "/systemctl/unit/:unit/restart",
         out: true,
         open: true,
         connected: "service(systemctl).restart",
@@ -241,12 +316,27 @@ export const data = {
           }
         ]
       },
-      "/systemctl/reload/:unit": {
-        method: "GET",
-        path: "/systemctl/reload/:unit",
+      "/systemctl/unit/:unit/reload": {
+        method: "POST",
+        path: "/systemctl/unit/:unit/reload",
         out: true,
         open: true,
         connected: "service(systemctl).reload",
+        interceptors: [
+          {
+            type: "ctx-jwt-verify"
+          },
+          {
+            type: "ctx"
+          }
+        ]
+      },
+      "/other/fail2ban": {
+        method: "GET",
+        path: "/other/fail2ban",
+        out: true,
+        open: true,
+        connected: "service(systemctl).fail2ban",
         interceptors: [
           {
             type: "ctx-jwt-verify"
@@ -259,10 +349,10 @@ export const data = {
     }
   },
   ldap: {
-    type: "ServiceLDAP",
+    type: "ldap",
     name: "ldap",
     state: "stopped",
-    logLevel: "trace",
+    logLevel: "info",
     endpoints: {
       log: {
         out: true,
@@ -293,7 +383,7 @@ export const data = {
     type: "health-check",
     name: "health",
     state: "running",
-    logLevel: "trace",
+    logLevel: "info",
     endpoints: {
       log: {
         out: true,
@@ -312,25 +402,45 @@ export const data = {
         in: true,
         out: true,
         open: true,
-        connected: "service(http)./state"
+        connected: "service(http)./state",
+        interceptors: [
+          {
+            type: "encode-json"
+          }
+        ]
       },
       cpu: {
         in: true,
         out: true,
         open: true,
-        connected: "service(http)./state/cpu"
+        connected: "service(http)./state/cpu",
+        interceptors: [
+          {
+            type: "encode-json"
+          }
+        ]
       },
       memory: {
         in: true,
         out: true,
         open: true,
-        connected: "service(http)./state/memory"
+        connected: "service(http)./state/memory",
+        interceptors: [
+          {
+            type: "encode-json"
+          }
+        ]
       },
       uptime: {
         in: true,
         out: true,
         open: true,
-        connected: "service(http)./state/uptime"
+        connected: "service(http)./state/uptime",
+        interceptors: [
+          {
+            type: "encode-json"
+          }
+        ]
       },
       resourceUsage: {
         in: true,
@@ -340,10 +450,10 @@ export const data = {
     }
   },
   auth: {
-    type: "ServiceAuthenticator",
+    type: "authenticator",
     name: "auth",
     state: "running",
-    logLevel: "trace",
+    logLevel: "info",
     endpoints: {
       log: {
         out: true,
@@ -374,7 +484,7 @@ export const data = {
     type: "admin",
     name: "admin",
     state: "running",
-    logLevel: "trace",
+    logLevel: "info",
     endpoints: {
       log: {
         out: true,
@@ -393,15 +503,23 @@ export const data = {
         in: true,
         out: true,
         open: true,
-        connected: ["service(http)./services", "service(swarm).topic.services"]
+        connected: [
+          "service(http)./services",
+          "service(swarm).topic.services[T]"
+        ],
+        interceptors: [
+          {
+            type: "encode-json"
+          }
+        ]
       }
     }
   },
   swarm: {
     type: "swarm",
     name: "swarm",
-    state: "starting",
-    logLevel: "trace",
+    state: "running",
+    logLevel: "info",
     endpoints: {
       log: {
         out: true,
@@ -417,10 +535,14 @@ export const data = {
         open: true
       },
       "topic.services": {
-        topic: {},
         in: true,
         out: true,
-        connected: "service(admin).services"
+        open: true,
+        connected: "service(admin).services[C]",
+        sockets: 3,
+        topic: {
+          name: "services"
+        }
       },
       "peers.services": {
         topic: {},
@@ -430,10 +552,10 @@ export const data = {
     }
   },
   systemctl: {
-    type: "ServiceSystemdControl",
+    type: "systemctl",
     name: "systemctl",
     state: "running",
-    logLevel: "trace",
+    logLevel: "info",
     endpoints: {
       log: {
         out: true,
@@ -448,35 +570,71 @@ export const data = {
         in: true,
         open: true
       },
-      status: {
+      files: {
         in: true,
         out: true,
         open: true,
-        connected: "service(http)./systemctl/status"
+        connected: "service(http)./systemctl/unit/:unit/files"
+      },
+      unit: {
+        in: true,
+        out: true,
+        open: true,
+        connected: "service(http)./systemctl/unit/:unit"
+      },
+      units: {
+        in: true,
+        out: true,
+        open: true,
+        connected: "service(http)./systemctl/unit"
+      },
+      timers: {
+        in: true,
+        out: true,
+        open: true,
+        connected: "service(http)./systemctl/timers"
+      },
+      sockets: {
+        in: true,
+        out: true,
+        open: true,
+        connected: "service(http)./systemctl/sockets"
+      },
+      machines: {
+        in: true,
+        out: true,
+        open: true,
+        connected: "service(http)./systemctl/machines"
       },
       start: {
         in: true,
         out: true,
         open: true,
-        connected: "service(http)./systemctl/start/:unit"
+        connected: "service(http)./systemctl/unit/:unit/start"
       },
       stop: {
         in: true,
         out: true,
         open: true,
-        connected: "service(http)./systemctl/stop/:unit"
+        connected: "service(http)./systemctl/unit/:unit/stop"
       },
       restart: {
         in: true,
         out: true,
         open: true,
-        connected: "service(http)./systemctl/restart/:unit"
+        connected: "service(http)./systemctl/unit/:unit/restart"
       },
       reload: {
         in: true,
         out: true,
         open: true,
-        connected: "service(http)./systemctl/reload/:unit"
+        connected: "service(http)./systemctl/unit/:unit/reload"
+      },
+      fail2ban: {
+        in: true,
+        out: true,
+        open: true,
+        connected: "service(http)./other/fail2ban"
       }
     }
   }
