@@ -539,15 +539,25 @@ export const data = {
         out: true,
         open: true,
         connected: "service(admin).services[C]",
-        sockets: 3,
+        sockets: 1,
         topic: {
-          name: "services"
+          name: "services",
+          peers: [],
+          sockets: 1,
+          lookup: true,
+          announce: true
         }
       },
       "peers.services": {
-        topic: {},
         out: true,
-        connected: "service(http)./services/peers"
+        connected: "service(http)./services/peers",
+        topic: {
+          name: "services",
+          peers: [],
+          sockets: 1,
+          lookup: true,
+          announce: true
+        }
       }
     }
   },
