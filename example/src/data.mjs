@@ -503,10 +503,7 @@ export const data = {
         in: true,
         out: true,
         open: true,
-        connected: [
-          "service(http)./services",
-          "service(swarm).topic.services[T]"
-        ],
+        connected: ["service(http)./services", "service(swarm).topic.services"],
         interceptors: [
           {
             type: "encode-json"
@@ -537,15 +534,31 @@ export const data = {
       "topic.services": {
         in: true,
         out: true,
-        open: true,
-        connected: "service(admin).services[C]",
-        sockets: 1,
+        connected: "service(admin).services",
+        sockets: 0,
         topic: {
           name: "services",
-          peers: [],
-          sockets: 1,
-          lookup: true,
-          announce: true
+          peers: [
+            {
+              host: "79.194.42.188",
+              port: 35323
+            },
+            {
+              host: "79.194.42.188",
+              port: 38661
+            },
+            {
+              host: "79.194.42.188",
+              port: 44361
+            },
+            {
+              host: "10.0.6.2",
+              port: 44361
+            }
+          ],
+          sockets: 0,
+          announce: true,
+          lookup: true
         }
       },
       "peers.services": {
@@ -553,10 +566,27 @@ export const data = {
         connected: "service(http)./services/peers",
         topic: {
           name: "services",
-          peers: [],
-          sockets: 1,
-          lookup: true,
-          announce: true
+          peers: [
+            {
+              host: "79.194.42.188",
+              port: 35323
+            },
+            {
+              host: "79.194.42.188",
+              port: 38661
+            },
+            {
+              host: "79.194.42.188",
+              port: 44361
+            },
+            {
+              host: "10.0.6.2",
+              port: 44361
+            }
+          ],
+          sockets: 0,
+          announce: true,
+          lookup: true
         }
       }
     }
