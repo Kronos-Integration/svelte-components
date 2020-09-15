@@ -19,7 +19,7 @@
     "test:cafe": "testcafe $BROWSER:headless tests/cafe/*.js -s build/test --app-init-delay 1000 --app \"rollup -c example/rollup.config.mjs -w\""
   },
   "dependencies": {
-    "@kronos-integration/endpoint": "^9.2.2",
+    "@kronos-integration/endpoint": "^9.2.4",
     "@kronos-integration/service": "^9.2.8",
     "svelte-guard-history-router": "^2.24.0"
   },
