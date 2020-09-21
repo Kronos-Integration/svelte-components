@@ -1,5 +1,5 @@
 <script>
-  import Index, { ServiceCanvas, Services } from "../../src/index.svelte";
+  import Index, { ServiceCanvas, Services } from "../../../src/index.svelte";
   import { data } from "./data.mjs";
 </script>
 
