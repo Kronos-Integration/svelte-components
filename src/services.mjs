@@ -79,6 +79,9 @@ export class Services extends ServiceProviderMixin(Service) {
       y += service.h + 10;
     }
 
+    services.width = 500;
+    services.height = y;
+    
     return services;
   }
 

@@ -1,9 +1,6 @@
 <script>
   export let services;
 
-  let width = 500;
-  let height = 1400;
-
   function connectionPath(from, to) {
     return `M60 0H${from.rx}V${to.owner.y + to.y - (from.owner.y + from.y)}H60`;
   }
@@ -15,8 +12,6 @@
 
 <style>
   svg {
-    width: 33%;
-    height: 33%;
     pointer-events: none;
   }
 
@@ -81,7 +76,7 @@
   }
 </style>
 
-<svg viewbox="0 0 {width} {height}">
+<svg viewbox="0 0 {services.width} {services.height}">
   <g class="services">
     {#if services.services}
       {#each Object.values(services.services) as service}
@@ -94,7 +89,8 @@
             x="0"
             y="0"
             width={service.w}
-            height={service.h} />
+            height={service.h}
+            rx="5" />
           <text x="8" y="22">{service.name} ({service.type})</text>
           {#each Object.values(service.endpoints) as endpoint}
             <g
