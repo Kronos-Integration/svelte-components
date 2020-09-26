@@ -17,17 +17,20 @@
   svg {
     width: 33%;
     height: 33%;
+    pointer-events: none;
   }
 
   .service rect {
     stroke: none;
     opacity: 0.35;
+    pointer-events: auto;
   }
 
   .endpoint {
     text-anchor: end;
     font-size: 0.8em;
     overflow: visible;
+    pointer-events: auto;
   }
 
   .open {
@@ -37,6 +40,7 @@
 
   .endpoint:hover {
     stroke: red;
+    pointer-events: auto;
   }
 
   .interceptor {
@@ -53,6 +57,7 @@
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-miterlimit: 10;
+    pointer-events: auto;
   }
 
   .connection:hover {
