@@ -6,8 +6,13 @@
   }
 
   function clickService(event) {
+   // console.log(event);
+  }
+
+  function dragStartService(event) {
     console.log(event);
   }
+
 </script>
 
 <style>
@@ -15,10 +20,13 @@
     pointer-events: none;
   }
 
+  .service {
+    pointer-events: auto;
+  }
+
   .service rect {
     stroke: none;
     opacity: 0.35;
-    pointer-events: auto;
   }
 
   .endpoint {
@@ -77,13 +85,29 @@
 </style>
 
 <svg viewbox="0 0 {services.width} {services.height}">
+  <defs>
+    <symbol id="interceptor" width="10" height="10" viewBox="0 0 2 2">
+      <circle class="interceptor" cx="0" cy="0" r="5" />
+    </symbol>
+  
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+        markerWidth="6" markerHeight="6"
+        orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+    <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5"
+        markerWidth="5" markerHeight="5">
+      <circle cx="5" cy="5" r="5" fill="black" />
+    </marker>
+  </defs>
+
   <g class="services">
     {#if services.services}
       {#each Object.values(services.services) as service}
         <g
           class="service"
           transform="translate({service.x},{service.y})"
-          on:click={clickService}>
+          on:click={clickService} on:dragstart={dragStartService}>
           <rect
             class={service.state}
             x="0"
@@ -103,13 +127,18 @@
                 {#each [...endpoint.connections()] as connected}
                   <path
                     class="connection"
-                    d={connectionPath(endpoint, connected)} />
+                    d={connectionPath(endpoint, connected)}
+                    marker-end="url(#arrow)"
+                    marker-start="url(#dot)"
+                    />
                 {/each}
               {:else}
                 <circle cx="60" cy="0" r="5" />
               {/if}
 
               {#each endpoint.interceptors as interceptor}
+                <!--<use xlink:href="#interceptor" x="72"  y="0"/>-->
+
                 <circle class="interceptor" cx="72" cy="0" r="5" />
               {/each}
             </g>
