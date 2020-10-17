@@ -8,20 +8,13 @@
   export let services;
 </script>
 
-<Route path="service" component={ServicesPage}>
-  <Route
-    path="/:service"
-    objectInstance={Service}
-    propertyMapping={{ service: 'name' }}>
-    <Route path="/endpoint">
-      <Route
-        path="/:endpoint"
-        objectInstance={Endpoint}
-        propertyMapping={{ endpoint: 'name' }}>
-        <Route path="interceptor">
+<Route path="service" component={ServicesPage} objectInstance={Service}>
+  <Route path="/:service" propertyMapping={{ service: 'name' }}>
+    <Route path="/endpoint" objectInstance={Endpoint}>
+      <Route path="/:endpoint" propertyMapping={{ endpoint: 'name' }}>
+        <Route path="interceptor" objectInstance={Interceptor}>
           <Route
             path="/:interceptor"
-            objectInstance={Interceptor}
             propertyMapping={{ interceptor: 'type' }} />
         </Route>
       </Route>
