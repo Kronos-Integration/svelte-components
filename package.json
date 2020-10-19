@@ -21,7 +21,7 @@
   "dependencies": {
     "@kronos-integration/endpoint": "^9.2.14",
     "@kronos-integration/service": "^9.2.23",
-    "svelte-guard-history-router": "^2.24.0"
+    "svelte-guard-history-router": "^3.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^15.1.0",
