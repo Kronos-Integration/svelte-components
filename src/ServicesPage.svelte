@@ -2,6 +2,7 @@
   export let router;
 
   const route = router.route;
+  const services = $route.value;
 </script>
 
-{#each $route as service}{service.name}{/each}
+{#each services as service}{service.name}{/each}
