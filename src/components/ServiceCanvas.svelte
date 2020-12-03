@@ -144,10 +144,10 @@
                 <circle cx="60" cy="0" r="5" />
               {/if}
 
-              {#each endpoint.interceptors as interceptor}
+              {#each endpoint.interceptors as interceptor, i}
                 <!--<use xlink:href="#interceptor" x="72"  y="0"/>-->
 
-                <circle class="interceptor" cx="72" cy="0" r="5" />
+                <circle class="interceptor" cx={72 + 10 * i} cy="0" r="5" />
               {/each}
             </g>
           {/each}
