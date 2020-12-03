@@ -1,4 +1,6 @@
 <script>
+  import Interceptor from "./Interceptor.svelte";
+
   export let services;
 
   function connectionPath(from, to) {
@@ -145,9 +147,7 @@
               {/if}
 
               {#each endpoint.interceptors as interceptor, i}
-                <!--<use xlink:href="#interceptor" x="72"  y="0"/>-->
-
-                <circle class="interceptor" cx={72 + 10 * i} cy="0" r="5" />
+                <Interceptor {interceptor} cx={72 + 10 * i} cy={0} />
               {/each}
             </g>
           {/each}
