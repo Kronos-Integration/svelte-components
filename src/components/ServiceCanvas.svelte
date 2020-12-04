@@ -1,14 +1,9 @@
 <script>
-  import Interceptor from "./Interceptor.svelte";
+  import Endpoint from "./Endpoint.svelte";
 
   export let services;
 
-  function connectionPath(from, to) {
-    return `M60 0H${from.rx}V${to.owner.y + to.y - (from.owner.y + from.y)}H60`;
-  }
-
   function clickService(event) {
-    // console.log(event);
   }
 
   function dragStartService(event) {
@@ -30,41 +25,9 @@
     opacity: 0.35;
   }
 
-  .endpoint {
-    text-anchor: end;
-    overflow: visible;
-    pointer-events: auto;
-  }
-
   .open {
     fill: green;
     stroke: green;
-  }
-
-  .endpoint:hover {
-    stroke: red;
-    pointer-events: auto;
-  }
-
-  .interceptor {
-  }
-
-  .interceptor:hover {
-    stroke: red;
-  }
-
-  .connection {
-    fill: none;
-    stroke: black;
-    stroke-width: 1pt;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
-    pointer-events: auto;
-  }
-
-  .connection:hover {
-    stroke: red;
   }
 
   .running {
@@ -128,28 +91,7 @@
             rx="5" />
           <text x="8" y="22">{service.name} ({service.type})</text>
           {#each Object.values(service.endpoints) as endpoint}
-            <g
-              class={endpoint.isOpen ? 'endpoint open' : 'endpoint'}
-              transform="translate({endpoint.x - 60},{endpoint.y})">
-              <text x={52} y={3}>{endpoint.name}</text>
-              {#if endpoint.isIn}
-                <rect x="55" y="-5" width="10" height="10" />
-
-                {#each [...endpoint.connections()] as connected}
-                  <path
-                    class="connection"
-                    d={connectionPath(endpoint, connected)}
-                    marker-end="url(#arrow)"
-                    marker-start="url(#dot)" />
-                {/each}
-              {:else}
-                <circle cx="60" cy="0" r="5" />
-              {/if}
-
-              {#each endpoint.interceptors as interceptor, i}
-                <Interceptor {interceptor} cx={72 + 10 * i} cy={0} />
-              {/each}
-            </g>
+           <Endpoint {endpoint}/>
           {/each}
         </g>
       {/each}
