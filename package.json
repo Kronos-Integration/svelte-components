@@ -12,6 +12,12 @@
     "svelte",
     "web"
   ],
+  "contributors": [
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ],
   "license": "BSD-2-Clause",
   "scripts": {
     "start": "rollup -c tests/app/rollup.config.mjs -w",
@@ -49,7 +55,7 @@
   "homepage": "https://github.com/Kronos-Integration/svelte-components#readme",
   "template": {
     "inheritFrom": [
-      "arlac77/template-github",
+      "arlac77/template-arlac77-github",
       "arlac77/template-svelte-component"
     ]
   }
