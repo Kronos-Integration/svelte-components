@@ -3,13 +3,40 @@ import {
   ServiceProviderMixin,
   InitializationContext
 } from "@kronos-integration/service";
-import {
-  Interceptor
-} from "@kronos-integration/interceptor";
+import { Interceptor } from "@kronos-integration/interceptor";
 
 globalThis.process = { env: {} };
 globalThis.Buffer = class Buffer {};
 
+class TypedInterceptor extends Interceptor {
+  constructor(config) {
+    super(config);
+    if(config == undefined || config == null) {
+      config = {};
+    }
+    this._config = config;
+    this._type = config.type;
+    //delete config.type;
+
+   // console.log(Object.keys(this._config));
+
+    this._ca = Object.fromEntries(Object.keys(this._config).map(k => [k,{}]));
+  }
+
+  get type() {
+    return this._type;
+  }
+
+  get configurationAttributes()
+  {
+    return this._ca || super.configurationAttributes;
+  }
+}
+
+/**
+ * @property {string} type
+ * @property {string} state
+ */
 class TypedService extends Service {
   constructor(config, ic) {
     super(config, ic);
@@ -22,6 +49,10 @@ class TypedService extends Service {
 
   get state() {
     return this.config.state;
+  }
+
+  instantiateInterceptor(def) {
+    return new TypedInterceptor(def);
   }
 }
 
@@ -81,13 +112,13 @@ export class Services extends ServiceProviderMixin(Service) {
 
     services.width = 500;
     services.height = y;
-    
+
     return services;
   }
 
   instantiateInterceptor(def) {
     const interceptor = super.instantiateInterceptor(def);
-    if(interceptor) {
+    if (interceptor) {
       return interceptor;
     }
     return new Interceptor(def);

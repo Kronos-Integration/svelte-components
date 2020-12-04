@@ -3,7 +3,7 @@ export const data = {
     type: "systemd-logger",
     name: "logger",
     state: "running",
-    logLevel: "trace",
+    logLevel: "error",
     description: "Log consuming service",
     timeout: { start: 20, stop: 20, restart: 20 },
     endpoints: {
@@ -32,7 +32,7 @@ export const data = {
     type: "systemd-config",
     name: "config",
     state: "running",
-    logLevel: "trace",
+    logLevel: "error",
     description: "Config providing service",
     timeout: { start: 20, stop: 20, restart: 20 },
     endpoints: {
@@ -45,7 +45,7 @@ export const data = {
     type: "systemd",
     name: "systemd",
     state: "running",
-    logLevel: "trace",
+    logLevel: "error",
     description: "This service is the base class for service implementations",
     timeout: { start: 20, stop: 20, restart: 20 },
     endpoints: {
@@ -58,7 +58,7 @@ export const data = {
     type: "http",
     name: "http",
     state: "running",
-    logLevel: "trace",
+    logLevel: "error",
     description: "This service is the base class for service implementations",
     timeout: { server: 120, start: 20, stop: 20, restart: 20 },
     listen: {
@@ -221,7 +221,7 @@ export const data = {
     type: "authenticator",
     name: "auth",
     state: "running",
-    logLevel: "trace",
+    logLevel: "error",
     description: "provide authentication services",
     timeout: { server: 120, start: 20, stop: 20, restart: 20 },
     listen: {},
@@ -246,7 +246,7 @@ export const data = {
     type: "ldap",
     name: "ldap",
     state: "stopped",
-    logLevel: "trace",
+    logLevel: "error",
     description: "This service is the base class for service implementations",
     timeout: { server: 120, start: 20, stop: 20, restart: 20 },
     jwt: {
@@ -303,7 +303,7 @@ export const data = {
     type: "health-check",
     name: "health",
     state: "running",
-    logLevel: "trace",
+    logLevel: "error",
     cpuInterval: 30,
     memoryInterval: 30,
     uptimeInterval: 30,
@@ -346,7 +346,7 @@ export const data = {
     type: "admin",
     name: "admin",
     state: "running",
-    logLevel: "trace",
+    logLevel: "error",
     description: "This service is the base class for service implementations",
     timeout: { server: 120, start: 20, stop: 20, restart: 20 },
     jwt: {
@@ -371,7 +371,7 @@ export const data = {
     type: "smtp",
     name: "smtp",
     state: "stopped",
-    logLevel: "trace",
+    logLevel: "error",
     description: "This service is the base class for service implementations",
     timeout: { server: 120, start: 20, stop: 20, restart: 20 },
     jwt: {

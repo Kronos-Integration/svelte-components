@@ -5,7 +5,7 @@
   export let endpoint;
 
   function click() {
-    alert(JSON.stringify(endpoint.toJSON()));
+  //  alert(JSON.stringify(endpoint.toJSON()));
   }
 
 </script>
