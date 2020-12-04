@@ -1,10 +1,19 @@
 <script>
+  import { getAttributes } from "model-attributes";
+
   export let interceptor;
   export let cx;
   export let cy;
 
   function click() {
-    alert(JSON.stringify(interceptor.toJSON()));
+    let atts = getAttributes(interceptor, interceptor.configurationAttributes);
+    const str =
+      `${interceptor.type}\n` +
+      Object.entries(atts)
+        .map(([k, v]) => `${k}: ${v}`)
+        .join("\n");
+
+    alert(str);
   }
 </script>
 
