@@ -1,9 +1,12 @@
 <script>
+  import { setContext } from "svelte";
+  import { INTERCEPTOR } from "../util.mjs";
   import { getAttributes } from "model-attributes";
 
   export let interceptor;
   export let cx;
   export let cy;
+  setContext(INTERCEPTOR, interceptor);
 
   function click() {
     let atts = getAttributes(interceptor, interceptor.configurationAttributes);

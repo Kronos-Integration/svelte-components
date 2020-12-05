@@ -18,7 +18,7 @@ class TypedInterceptor extends Interceptor {
     this._type = config.type;
     //delete config.type;
 
-   // console.log(Object.keys(this._config));
+    //console.log(Object.keys(this._config));
 
     this._ca = Object.fromEntries(Object.keys(this._config).map(k => [k,{}]));
   }
@@ -84,7 +84,7 @@ export class Services extends ServiceProviderMixin(Service) {
 
     const sh = 50;
     const sw = 140;
-    let cx = 110;
+    let cx = 100;
     let y = 0;
 
     for (const service of Object.values(services.services)) {
@@ -116,11 +116,8 @@ export class Services extends ServiceProviderMixin(Service) {
     return services;
   }
 
-  instantiateInterceptor(def) {
-    const interceptor = super.instantiateInterceptor(def);
-    if (interceptor) {
-      return interceptor;
-    }
-    return new Interceptor(def);
+  addEndpointProbe(endpoint)
+  {
+    console.log("add probe",endpoint);
   }
 }

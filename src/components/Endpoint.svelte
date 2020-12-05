@@ -1,13 +1,21 @@
 <script>
+  import { setContext, createEventDispatcher } from "svelte";
+  import { ENDPOINT } from "../util.mjs";
+
   import Interceptor from "./Interceptor.svelte";
   import Connection from "./Connection.svelte";
 
   export let endpoint;
 
-  function click() {
-  //  alert(JSON.stringify(endpoint.toJSON()));
-  }
+  setContext(ENDPOINT, endpoint);
 
+  const dispatch = createEventDispatcher();
+
+  function click() {
+    dispatch("add-endpoint-probe", {
+      endpoint
+    });
+  }
 </script>
 
 <style>
@@ -24,7 +32,8 @@
 </style>
 
 <text x={10} y={endpoint.y}>{endpoint.name}</text>
-<g on:click={click}
+<g
+  on:click={click}
   class={endpoint.isOpen ? 'endpoint open' : 'endpoint'}
   transform="translate({endpoint.x},{endpoint.y})">
   {#if endpoint.isIn}

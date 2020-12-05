@@ -1,7 +1,16 @@
 <script>
+  import { setContext } from "svelte";
+  import { SERVICES } from "../util.mjs";
   import Service from "./Service.svelte";
 
   export let services;
+
+  setContext(SERVICES, services);
+
+  function handleMessage(event) {
+		alert(event.detail.text);
+	}
+
 </script>
 
 <style>
@@ -10,7 +19,7 @@
   }
 </style>
 
-<svg viewbox="0 0 {services.width} {services.height}">
+<svg viewbox="0 0 {services.width} {services.height}" on:message={handleMessage}>
   <defs>
     <symbol id="interceptor" width="10" height="10" viewBox="0 0 2 2">
       <circle class="interceptor" cx="0" cy="0" r="5" />
