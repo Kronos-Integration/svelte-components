@@ -99,6 +99,7 @@ export class Services extends ServiceProviderMixin(Service) {
         for (const connection of endpoint.connections()) {
           cx = cx + 5;
           connection.rx = cx;
+         // console.log(`${endpoint.identifier} ${endpoint.interceptors}`);
         }
 
         ey += 12;

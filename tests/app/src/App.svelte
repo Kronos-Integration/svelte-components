@@ -18,7 +18,7 @@
               {endpoint.name}
               <ul>
                 {#each endpoint.interceptors as interceptor}
-                  <li>{interceptor.type}</li>
+              <li>{interceptor.type} ${JSON.stringify(interceptor.toJSON())}</li>
                 {/each}
               </ul>
             </li>

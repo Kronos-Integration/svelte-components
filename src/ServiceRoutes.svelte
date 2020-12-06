@@ -4,8 +4,6 @@
   import { Interceptor } from "@kronos-integration/interceptor";
   import { Service } from "./service.mjs";
   import ServicesPage from "./ServicesPage.svelte";
-
-  export let services;
 </script>
 
 <Route path="service" component={ServicesPage} objectInstance={Service}>
