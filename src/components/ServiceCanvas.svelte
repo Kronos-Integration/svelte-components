@@ -9,18 +9,15 @@
   setContext(SERVICES, services);
 
   function handleMessage(event) {
-		alert(event.detail.text);
-	}
+    alert(event.detail.text);
+  }
 
   $: {
-    console.log($requests);
-
     const endpoint = services.endpointForExpression($requests.endpoint);
-    if(endpoint) {
-      if(!endpoint.requests) {
+    if (endpoint) {
+      if (!endpoint.requests) {
         endpoint.requests = [$requests.arguments];
-      }
-      else {
+      } else {
         endpoint.requests.push($requests.arguments);
       }
     }
@@ -33,7 +30,9 @@
   }
 </style>
 
-<svg viewbox="0 0 {services.width} {services.height}" on:message={handleMessage}>
+<svg
+  viewbox="0 0 {services.width} {services.height}"
+  on:message={handleMessage}>
   <defs>
     <symbol id="interceptor" width="10" height="10" viewBox="0 0 2 2">
       <circle class="interceptor" cx="0" cy="0" r="5" />
