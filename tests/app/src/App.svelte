@@ -1,22 +1,36 @@
 <script>
+  import { writable } from "svelte/store";
+  import { onMount } from "svelte";
   import { ServiceCanvas, Services } from "../../../src/index.svelte";
   import { data } from "./data.mjs";
-  import { writable } from "svelte/store";
 
   export const requests = writable({
     endpoint: "service(admin).log",
     arguments: []
   });
 
-  setTimeout(() => {
-    requests.update(old => {
-      return {
-        endpoint: "service(admin).log",
-        arguments: ["1"]
-      };
-    });
-  }, 500);
+  onMount(() => {
+    setInterval(() => {
+      requests.update(old => {
+        return {
+          endpoint: "service(admin).log",
+          arguments: ["2"]
+        };
+      });
+    }, 500);
+  });
 </script>
+
+
+{#await Services.initialize(data)}
+  waiting...
+{:then services}
+  <ServiceCanvas {requests} {services} />
+{:catch e}
+  Error
+  {e}
+{/await}
+
 
 <ul>
   {#await Services.initialize(data)}
@@ -49,12 +63,3 @@
     {e}
   {/await}
 </ul>
-
-{#await Services.initialize(data)}
-  waiting...
-{:then services}
-  <ServiceCanvas {requests} {services} />
-{:catch e}
-  Error
-  {e}
-{/await}

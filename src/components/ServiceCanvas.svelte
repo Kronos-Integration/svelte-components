@@ -60,10 +60,8 @@
   </defs>
 
   <g class="services">
-    {#if services.services}
-      {#each Object.values(services.services) as service}
-        <Service {service} />
-      {/each}
-    {/if}
+    {#each Object.values(services.services) as service}
+      <Service {service} />
+    {/each}
   </g>
 </svg>
