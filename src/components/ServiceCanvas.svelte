@@ -1,9 +1,12 @@
 <script>
+import { request } from "http";
+
   import { setContext } from "svelte";
   import { SERVICES } from "../util.mjs";
   import Service from "./Service.svelte";
 
   export let services;
+  export let requests;
 
   setContext(SERVICES, services);
 
@@ -11,6 +14,10 @@
 		alert(event.detail.text);
 	}
 
+  $: {
+    //$request.endpoint;
+    console.log($requests);
+  }
 </script>
 
 <style>
