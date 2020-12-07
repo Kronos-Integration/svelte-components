@@ -36,6 +36,12 @@
   on:click={click}
   class={endpoint.isOpen ? 'endpoint open' : 'endpoint'}
   transform="translate({endpoint.x},{endpoint.y})">
+  {#if endpoint.requests}
+    {#each endpoint.requests as r, i}
+      <rect x={80 + i * 15} y="-5" width="5" height="5" />
+    {/each}
+  {/if}
+
   {#if endpoint.isIn}
     <rect x="-5" y="-5" width="10" height="10" />
     {#each [...endpoint.connections()] as connected}

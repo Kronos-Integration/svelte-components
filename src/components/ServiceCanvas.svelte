@@ -1,6 +1,4 @@
 <script>
-import { request } from "http";
-
   import { setContext } from "svelte";
   import { SERVICES } from "../util.mjs";
   import Service from "./Service.svelte";
@@ -15,8 +13,17 @@ import { request } from "http";
 	}
 
   $: {
-    //$request.endpoint;
     console.log($requests);
+
+    const endpoint = services.endpointForExpression($requests.endpoint);
+    if(endpoint) {
+      if(!endpoint.requests) {
+        endpoint.requests = [$requests.arguments];
+      }
+      else {
+        endpoint.requests.push($requests.arguments);
+      }
+    }
   }
 </script>
 
