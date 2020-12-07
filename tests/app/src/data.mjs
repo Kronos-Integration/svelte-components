@@ -24,8 +24,7 @@ export const data = {
           "service(systemd).log"
         ]
       },
-      config: { in: true, open: true },
-      command: { in: true, open: true }
+      config: { in: true, open: true }
     }
   },
   config: {

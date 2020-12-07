@@ -23,4 +23,9 @@ export class MockService extends Service {
   instantiateInterceptor(def) {
     return new MockInterceptor(def);
   }
+
+
+  log(level, arg) {
+    // ignore
+  }
 }
