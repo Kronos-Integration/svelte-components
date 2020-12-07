@@ -1,4 +1,4 @@
-export const SERVICES = "@private-SERVICES";
-export const SERVICE = "@private-SERVICE";
-export const ENDPOINT = "@private-ENDPOINT";
-export const INTERCEPTOR = "@private-INTERCEPTOR";
+export const SERVICES = "_SERVICES";
+export const SERVICE = "_SERVICE";
+export const ENDPOINT = "_ENDPOINT";
+export const INTERCEPTOR = "_INTERCEPTOR";
