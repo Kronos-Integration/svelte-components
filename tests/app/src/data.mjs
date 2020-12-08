@@ -42,6 +42,7 @@ export const data = {
   systemd: {
     type: "systemd",
     name: "systemd",
+    serviceProvider: true,
     state: "running",
     logLevel: "error",
     description: "This service is the base class for service implementations",

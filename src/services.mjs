@@ -30,14 +30,21 @@ class NoneWaitingInitializationContext extends InitializationContext {
 
 export class Services extends ServiceProviderMixin(Service) {
   static async initialize(json) {
-    const controllerData = json.systemd;
-
-    delete json.systemd;
+    let serviceProviderData = {}
+    for(const [k,v] of Object.entries(json)) {
+      if(v.serviceProvider) {
+        serviceProviderData = v;
+        delete json[k];
+        break;
+      }
+    }
 
     const services = new Services(
-      controllerData,
+      serviceProviderData,
       new NoneWaitingInitializationContext()
     );
+
+    this.type = serviceProviderData.type;
 
     await services.declareServices(json);
 
