@@ -1,7 +1,6 @@
 <script>
   import { setContext } from "svelte";
   import { SERVICE } from "../util.mjs";
-
   import Endpoint from "./Endpoint.svelte";
 
   export let service;
@@ -15,9 +14,8 @@
   }
 
   function handleMessage(event) {
-    console.log("Servide handleMessage",event);
-	}
-
+    console.log("Servide handleMessage", event);
+  }
 </script>
 
 <style>
@@ -53,6 +51,7 @@
 </style>
 
 <g
+  id={service.name}
   class="service"
   transform="translate({service.x},{service.y})"
   on:message={handleMessage}

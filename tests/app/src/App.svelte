@@ -32,6 +32,7 @@
 {/await}
 
 
+<!--
 <ul>
   {#await Services.initialize(data)}
     waiting...
@@ -63,3 +64,4 @@
     {e}
   {/await}
 </ul>
+-->

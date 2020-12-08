@@ -8,7 +8,17 @@ const base = "http://localhost:5000/";
 fixture`Getting Started`.page`${base}/index.html`;
 
 test("list services", async t => {
+  /*
   const service = Selector(".service");
 
   await t.expect(service.innerText).contains("logger (logger)");
+*/
+
+  const adminServiceExists = Selector('#admin').exists;
+  await t.expect(adminServiceExists).ok();
+
+  /*
+  const endpointExists = Selector('#service(logger).log').exists;
+  await t.expect(endpointExists).ok();
+*/
 });

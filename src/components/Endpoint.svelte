@@ -11,6 +11,7 @@
 
   const dispatch = createEventDispatcher();
 
+
   function click() {
     dispatch("add-endpoint-probe", {
       endpoint
@@ -33,6 +34,7 @@
 
 <text x={10} y={endpoint.y}>{endpoint.name}</text>
 <g
+  id={endpoint.identifier}
   on:click={click}
   class={endpoint.isOpen ? 'endpoint open' : 'endpoint'}
   transform="translate({endpoint.x},{endpoint.y})">
