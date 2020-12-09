@@ -15,6 +15,7 @@
   $: {
     const endpoint = services.endpointForExpression($requests.endpoint);
     if (endpoint) {
+      $requests.endpoint = endpoint;
       if (!endpoint.requests) {
         endpoint.requests = [$requests.arguments];
       } else {
