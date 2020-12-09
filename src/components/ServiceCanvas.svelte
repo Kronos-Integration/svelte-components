@@ -13,13 +13,17 @@
   }
 
   $: {
-    const endpoint = services.endpointForExpression($requests.endpoint);
-    if (endpoint) {
-      $requests.endpoint = endpoint;
-      if (!endpoint.requests) {
-        endpoint.requests = [$requests.arguments];
-      } else {
-        endpoint.requests.push($requests.arguments);
+    if ($requests.endpoint) {
+      const endpoint = services.endpointForExpression($requests.endpoint);
+
+      if (endpoint) {
+        if (!endpoint.requests) {
+          endpoint.requests = [$requests.arguments];
+        } else {
+          endpoint.requests.push($requests.arguments);
+        }
+       // console.log(endpoint.name,endpoint.requests);
+        services.services = services.services;
       }
     }
   }
