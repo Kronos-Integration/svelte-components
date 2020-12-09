@@ -10,6 +10,9 @@ globalThis.Buffer = class Buffer {};
 
 class NoneWaitingInitializationContext extends InitializationContext {
   async getServiceFactory(type) {
+    if (type === "logger") {
+      return MockService;
+    }
     const f = await super.getServiceFactory(type);
 
     if (!f) {
@@ -30,9 +33,9 @@ class NoneWaitingInitializationContext extends InitializationContext {
 
 export class Services extends ServiceProviderMixin(Service) {
   static async initialize(json) {
-    let serviceProviderData = {}
-    for(const [k,v] of Object.entries(json)) {
-      if(v.serviceProvider) {
+    let serviceProviderData = {};
+    for (const [k, v] of Object.entries(json)) {
+      if (v.serviceProvider) {
         serviceProviderData = v;
         delete json[k];
         break;
