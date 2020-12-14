@@ -1,7 +1,8 @@
 import {
   Service,
   ServiceProviderMixin,
-  InitializationContext
+  InitializationContext,
+  ServiceLogger
 } from "@kronos-integration/service";
 import { MockService } from "./mock-service.mjs";
 
@@ -31,7 +32,12 @@ class NoneWaitingInitializationContext extends InitializationContext {
   }
 }
 
-export class Services extends ServiceProviderMixin(Service) {
+class Logger extends ServiceLogger {
+  async logEntry(entry) {
+  }
+}
+
+export class Services extends ServiceProviderMixin(Service, Logger) {
   static async initialize(json) {
     let serviceProviderData = {};
     for (const [k, v] of Object.entries(json)) {
