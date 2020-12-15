@@ -1,19 +1,15 @@
 import {
-  Service,
   ServiceProviderMixin,
-  InitializationContext,
-  ServiceLogger
+  InitializationContext
 } from "@kronos-integration/service";
 import { MockService } from "./mock-service.mjs";
+import { MockLogger } from "./mock-logger.mjs";
 
 globalThis.process = { env: {} };
 globalThis.Buffer = class Buffer {};
 
 class NoneWaitingInitializationContext extends InitializationContext {
   async getServiceFactory(type) {
-    if (type === "logger") {
-      return MockService;
-    }
     const f = await super.getServiceFactory(type);
 
     if (!f) {
@@ -32,12 +28,7 @@ class NoneWaitingInitializationContext extends InitializationContext {
   }
 }
 
-class Logger extends ServiceLogger {
-  async logEntry(entry) {
-  }
-}
-
-export class Services extends ServiceProviderMixin(Service, Logger) {
+export class Services extends ServiceProviderMixin(MockService, MockLogger) {
   static async initialize(json) {
     let serviceProviderData = {};
     for (const [k, v] of Object.entries(json)) {
@@ -52,8 +43,6 @@ export class Services extends ServiceProviderMixin(Service, Logger) {
       serviceProviderData,
       new NoneWaitingInitializationContext()
     );
-
-    this.type = serviceProviderData.type;
 
     await services.declareServices(json);
 

@@ -7,23 +7,22 @@ import { MockInterceptor } from "./mock-interceptor.mjs";
  * @property {string} state
  */
 export class MockService extends Service {
-  constructor(config, ic) {
-    super(config, ic);
+  async configure(config) {
+    super.configure(config);
     this.config = config;
   }
 
-  get type() {
-    return this.config.type;
+  get state() {
+    return this.config ? this.config.state : super.state;
   }
 
-  get state() {
-    return this.config.state;
+  get type() {
+    return this.config ? this.config.type : super.type;
   }
 
   instantiateInterceptor(def) {
     return new MockInterceptor(def);
   }
-
 
   log(level, arg) {
     // ignore
