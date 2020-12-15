@@ -4,6 +4,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import dev from "rollup-plugin-dev";
 import svelte from "rollup-plugin-svelte";
 import postcss from "rollup-plugin-postcss";
+//import postcssImport from "postcss-import";
 
 const basedir = "tests/app";
 const port = 5000;
@@ -22,7 +23,12 @@ export default {
       buffer: "export class Buffer {}"
     }),
     svelte(),
-    postcss(),
+    postcss({
+      extract: true,
+      sourceMap: true,
+      minimize: false,
+    //  plugins: [postcssImport]
+    }),
     commonjs(),
     resolve({
       browser: true,
