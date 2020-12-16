@@ -18,38 +18,6 @@
   }
 </script>
 
-<style>
-  .service {
-    pointer-events: auto;
-  }
-
-  .service rect {
-    stroke: none;
-    opacity: 0.35;
-  }
-
-  .open {
-    fill: green;
-    stroke: green;
-  }
-
-  .running {
-    fill: green;
-  }
-  .starting {
-    fill: lightgreen;
-  }
-  .stopped {
-    fill: gray;
-  }
-  .stopping {
-    fill: lightgray;
-  }
-  .failed {
-    fill: red;
-  }
-</style>
-
 <g
   id={service.name}
   class="service"

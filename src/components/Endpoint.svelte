@@ -18,19 +18,6 @@
   }
 </script>
 
-<style>
-  .endpoint {
-    text-anchor: end;
-    overflow: visible;
-    pointer-events: auto;
-  }
-
-  .endpoint:hover {
-    stroke: red;
-    pointer-events: auto;
-  }
-</style>
-
 <text x={10} y={endpoint.y}>{endpoint.name}</text>
 <g
   id={endpoint.identifier}

@@ -20,13 +20,4 @@
   }
 </script>
 
-<style>
-  .interceptor {
-  }
-
-  .interceptor:hover {
-    stroke: red;
-  }
-</style>
-
 <circle class="interceptor" {cx} {cy} r="5" on:click={click} />

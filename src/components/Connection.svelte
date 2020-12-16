@@ -7,22 +7,6 @@
   }
 </script>
 
-<style>
-  .connection {
-    fill: none;
-    stroke: black;
-    stroke-width: 1pt;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
-    pointer-events: auto;
-  }
-
-  .connection:hover {
-    stroke: red;
-  }
-</style>
-
 <path
   class="connection"
   d={connectionPath(from, to)}

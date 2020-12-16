@@ -1,4 +1,62 @@
+svg {
+  pointer-events: none;
+}
+
+.service {
+  pointer-events: auto;
+}
+
+.service rect {
+  stroke: none;
+  opacity: 0.35;
+}
+
+.endpoint {
+  text-anchor: end;
+  overflow: visible;
+  pointer-events: auto;
+}
+
+.endpoint:hover {
+  stroke: red;
+  pointer-events: auto;
+}
 
 .interceptor:hover {
   stroke: red;
+}
+
+.connection {
+  fill: none;
+  stroke: black;
+  stroke-width: 1pt;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+  pointer-events: auto;
+}
+
+.connection:hover {
+  stroke: red;
+}
+
+.open {
+  fill: green;
+  stroke: green;
+}
+
+.running {
+  fill: green;
+}
+.starting {
+  fill: lightgreen;
+}
+.stopped {
+  fill: gray;
+}
+.stopping {
+  fill: lightgray;
+}
+.failed {
+  fill: red;
 }

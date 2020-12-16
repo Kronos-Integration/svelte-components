@@ -29,12 +29,6 @@
   }
 </script>
 
-<style>
-  svg {
-    pointer-events: none;
-  }
-</style>
-
 <svg
   viewbox="0 0 {services.width} {services.height}"
   on:message={handleMessage}>
