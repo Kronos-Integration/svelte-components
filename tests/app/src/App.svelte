@@ -1,4 +1,5 @@
 <script>
+  import * as style from "./main.css";
   import { writable } from "svelte/store";
   import { onMount } from "svelte";
   import { ServiceCanvas, Services } from "../../../src/index.svelte";
@@ -21,7 +22,6 @@
   });
 </script>
 
-
 {#await Services.initialize(data)}
   waiting...
 {:then services}
@@ -30,7 +30,6 @@
   Error
   {e}
 {/await}
-
 
 <!--
 <ul>
