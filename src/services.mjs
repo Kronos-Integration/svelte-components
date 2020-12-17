@@ -81,10 +81,16 @@ export class Services extends ServiceProviderMixin(MockService, MockLogger) {
   }
 
   *connections() {
+    const delivered = new Set();
     for (const service of Object.values(this.services)) {
       for (const endpoint of Object.values(service.endpoints)) {
         for (const connection of endpoint.connections()) {
-          yield [endpoint, connection];
+          const key = endpoint.identifier + "-" + connection.identifier;
+          if (!delivered.has(key)) {
+            delivered.add(key);
+            delivered.add(connection.identifier + "-" + endpoint.identifier);
+            yield [endpoint, connection];
+          }
         }
       }
     }
