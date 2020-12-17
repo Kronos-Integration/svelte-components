@@ -81,6 +81,16 @@ export class Services extends ServiceProviderMixin(MockService, MockLogger) {
     return services;
   }
 
+  *connections() {
+    for (const service of Object.values(this.services)) {
+      for (const endpoint of Object.values(service.endpoints)) {
+        for (const connection of endpoint.connections()) {
+          yield [endpoint, connection];
+        }
+      }
+    }
+  }
+
   addEndpointProbe(endpoint) {
     console.log("add probe", endpoint);
   }

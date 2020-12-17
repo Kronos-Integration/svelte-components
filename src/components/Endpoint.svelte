@@ -3,7 +3,6 @@
   import { ENDPOINT } from "../util.mjs";
 
   import Interceptor from "./Interceptor.svelte";
-  import Connection from "./Connection.svelte";
 
   export let endpoint;
 
@@ -33,13 +32,7 @@
       <rect x={70 + index * 12} y="-5" width="5" height="5" />
     {/each}
   {/if}
-
-  {#if endpoint.isIn}
-    {#each [...endpoint.connections()] as connected}
-      <Connection from={endpoint} to={connected} />
-    {/each}
-  {/if}
-
+  
   {#each endpoint.interceptors as interceptor, i}
     <Interceptor {interceptor} cx={20 + 12 * i} cy={0} />
   {/each}

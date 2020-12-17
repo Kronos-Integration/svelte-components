@@ -2,6 +2,7 @@
   import { setContext } from "svelte";
   import { SERVICES } from "../util.mjs";
   import Service from "./Service.svelte";
+  import Connection from "./Connection.svelte";
 
   export let services;
   export let requests;
@@ -63,4 +64,8 @@
       <Service {service} />
     {/each}
   </g>
+
+  {#each [...services.connections()] as [from, to]}
+    <Connection {from} {to} />
+  {/each}
 </svg>

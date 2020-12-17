@@ -3,7 +3,12 @@
   export let to;
 
   function connectionPath(from, to) {
-    return `M 0 0H${from.rx}V${to.owner.y + to.y - (from.owner.y + from.y)}H2`;
+    const fx = from.x + from.owner.x;
+    const fy = from.y + from.owner.y;
+    const tx = to.x + to.owner.x;
+    const ty = to.y + to.owner.y;
+
+    return `M${fx} ${fy}H${fx+from.rx}V${ty}H${tx + 2}`;
   }
 </script>
 
