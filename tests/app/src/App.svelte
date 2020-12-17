@@ -5,6 +5,7 @@
   import { ServiceCanvas, ServiceProvider } from "../../../src/index.svelte";
   import { data } from "./data.mjs";
 
+  /*
   export const requests = writable({
     endpoint: "service(admin).log",
     arguments: []
@@ -20,12 +21,14 @@
       });
     }, 2000);
   });
+
+  */
 </script>
 
 {#await ServiceProvider.initialize(data)}
   waiting...
 {:then services}
-  <ServiceCanvas {requests} {services} />
+  <ServiceCanvas {services} />
 {:catch e}
   Error
   {e}
