@@ -96,6 +96,15 @@ export class Services extends ServiceProviderMixin(MockService, MockLogger) {
     }
   }
 
+  *requests() {
+    /*
+    yield {
+      endpoint: this.endpointForExpression("service(admin).log"),
+      arguments: []
+    }
+    */
+  }
+
   addEndpointProbe(endpoint) {
     console.log("add probe", endpoint);
   }
