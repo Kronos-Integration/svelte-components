@@ -77,12 +77,20 @@ export class ServiceProvider extends ServiceProviderMixin(MockService, MockLogge
     services.width = 500;
     services.height = y;
 
+/*
+    services.addRequest({
+      endpoint: "service(admin).log",
+      arguments: ['arg1']
+    });
+*/
+
     return services;
   }
 
   constructor(...args) {
     super(...args);
     this.requests = [];
+
   }
 
   addRequest(request) {
