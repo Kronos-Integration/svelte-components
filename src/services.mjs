@@ -57,13 +57,12 @@ export class Services extends ServiceProviderMixin(MockService, MockLogger) {
       let ey = 10 + 20 + 5;
 
       for (const endpoint of Object.values(service.endpoints)) {
-        endpoint.x = sw; // - 10;
+        endpoint.x = sw;
         endpoint.y = ey;
 
         for (const connection of endpoint.connections()) {
           cx = cx + 5;
           connection.rx = cx;
-          // console.log(`${endpoint.identifier} ${endpoint.interceptors}`);
         }
 
         ey += 12;
