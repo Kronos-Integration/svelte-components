@@ -2,7 +2,7 @@
   import * as style from "./main.css";
   import { writable } from "svelte/store";
   import { onMount } from "svelte";
-  import { ServiceCanvas, Services } from "../../../src/index.svelte";
+  import { ServiceCanvas, ServiceProvider } from "../../../src/index.svelte";
   import { data } from "./data.mjs";
 
   export const requests = writable({
@@ -22,7 +22,7 @@
   });
 </script>
 
-{#await Services.initialize(data)}
+{#await ServiceProvider.initialize(data)}
   waiting...
 {:then services}
   <ServiceCanvas {requests} {services} />
@@ -33,7 +33,7 @@
 
 <!--
 <ul>
-  {#await Services.initialize(data)}
+  {#await ServiceProvider.initialize(data)}
     waiting...
   {:then services}
     {#each Object.values(services.services) as service}

@@ -1,5 +1,5 @@
 <script context="module">
   import ServiceCanvas from "./components/ServiceCanvas.svelte";
-  import { Services } from "./services.mjs";
-  export { ServiceCanvas, Services };
+  import { ServiceProvider } from "./service-provider.mjs";
+  export { ServiceCanvas, ServiceProvider };
 </script>

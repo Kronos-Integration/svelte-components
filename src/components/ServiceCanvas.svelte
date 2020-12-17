@@ -70,7 +70,7 @@
     <Connection {from} {to} />
   {/each}
 
-  {#each [...services.requests()] as request}
+  {#each services.requests as request}
     <Request {request} />
   {/each}
 </svg>

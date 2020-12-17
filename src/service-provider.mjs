@@ -28,7 +28,7 @@ class NoneWaitingInitializationContext extends InitializationContext {
   }
 }
 
-export class Services extends ServiceProviderMixin(MockService, MockLogger) {
+export class ServiceProvider extends ServiceProviderMixin(MockService, MockLogger) {
   static async initialize(json) {
     let serviceProviderData = {};
     for (const [k, v] of Object.entries(json)) {
@@ -39,7 +39,7 @@ export class Services extends ServiceProviderMixin(MockService, MockLogger) {
       }
     }
 
-    const services = new Services(
+    const services = new ServiceProvider(
       serviceProviderData,
       new NoneWaitingInitializationContext()
     );
@@ -80,6 +80,18 @@ export class Services extends ServiceProviderMixin(MockService, MockLogger) {
     return services;
   }
 
+  constructor(...args) {
+    super(...args);
+    this.requests = [];
+  }
+
+  addRequest(request) {
+    const endpoint = this.endpointForExpression(request.endpoint);
+    if(endpoint) {
+      this.requests.push({ endpoint, arguments: request.arguments });
+    }
+  }
+
   *connections() {
     const delivered = new Set();
     for (const service of Object.values(this.services)) {
@@ -94,15 +106,6 @@ export class Services extends ServiceProviderMixin(MockService, MockLogger) {
         }
       }
     }
-  }
-
-  *requests() {
-    /*
-    yield {
-      endpoint: this.endpointForExpression("service(admin).log"),
-      arguments: []
-    }
-    */
   }
 
   addEndpointProbe(endpoint) {
