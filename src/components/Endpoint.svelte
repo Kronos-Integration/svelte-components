@@ -17,14 +17,15 @@
   }
 </script>
 
-<text x={10} y={endpoint.y}>{endpoint.name}</text>
 <g
   id={endpoint.identifier}
+  class="endpoint"
   on:click={click}
-  class={endpoint.isOpen ? 'endpoint open' : 'endpoint'}
   transform="translate({endpoint.x},{endpoint.y})">
 
-  <circle cx="0" cy="0" r="4" fill="gray"/>
+  <text x="-6px" y="2px">{endpoint.name}</text>
+
+  <circle r="4"/>
 
   {#if endpoint.requests}
     {#each endpoint.requests as request, index}

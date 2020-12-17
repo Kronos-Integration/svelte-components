@@ -25,13 +25,7 @@
   on:message={handleMessage}
   on:click={clickService}
   on:dragstart={dragStartService}>
-  <rect
-    class={service.state}
-    x="0"
-    y="0"
-    width={service.w}
-    height={service.h}
-    rx="5" />
+  <rect width={service.w} height={service.h} rx="4" />
   <text x="8" y="14">{service.name}</text>
   {#each Object.values(service.endpoints) as endpoint}
     <Endpoint {endpoint} />

@@ -1,18 +1,28 @@
+
 svg {
   pointer-events: none;
 }
 
 .service {
+  font: bold 8px sans-serif;
   pointer-events: auto;
 }
 
+
 .service rect {
-  stroke: none;
-  opacity: 0.35;
+  stroke-width: 1px;
+  stroke: var(--color-neutral-300);
+  fill: var(--color-neutral-50);
+}
+
+.service circle {
+  stroke: var(--color-neutral-300);
+  fill: var(--color-neutral-50);
 }
 
 .endpoint {
   text-anchor: end;
+  font: 6px sans-serif;
   overflow: visible;
   pointer-events: auto;
 }
@@ -28,7 +38,7 @@ svg {
 
 .connection {
   fill: none;
-  stroke: black;
+  stroke: var(--color-neutral-400);
   stroke-width: 1pt;
   stroke-linecap: round;
   stroke-linejoin: round;

@@ -1,0 +1,37 @@
+:root {
+  --color-accent-50: #f0fdfa;
+  --color-accent-100: #ccfbf1;
+  --color-accent-200: #99f6e4;
+  --color-accent-300: #5eead4;
+  --color-accent-400: #2dd4bf;
+  --color-accent-500: #14b8a6;
+  --color-accent-600: #0d9488;
+  --color-accent-700: #0f766e;
+  --color-accent-800: #115e59;
+  --color-accent-900: #134e4a;
+  --color-warn-50: #fff1f2;
+  --color-warn-100: #ffe4e6;
+  --color-warn-200: #fecdd3;
+  --color-warn-300: #fda4af;
+  --color-warn-400: #fb7185;
+  --color-warn-500: #f43f5e;
+  --color-warn-600: #e11d48;
+  --color-warn-700: #be123c;
+  --color-warn-800: #9f1239;
+  --color-warn-900: #881337;
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f4f4f5;
+  --color-neutral-200: #e4e4e7;
+  --color-neutral-300: #d4d4d8;
+  --color-neutral-400: #a1a1aa;
+  --color-neutral-500: #71717a;
+  --color-neutral-600: #52525b;
+  --color-neutral-700: #3f3f46;
+  --color-neutral-800: #27272a;
+  --color-neutral-900: #18181b;
+  --color-neutral-900-10: #18181b10;
+  --color-neutral-900-14: #18181b14;
+  --color-neutral-900-20: #18181b20;
+  --color-neutral-900-40: #18181b40;
+  --color-neutral-900-80: #18181b80;
+}

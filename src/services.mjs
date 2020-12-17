@@ -47,8 +47,8 @@ export class Services extends ServiceProviderMixin(MockService, MockLogger) {
     await services.declareServices(json);
 
     const sh = 50;
-    const sw = 140;
-    let cx = 100;
+    const sw = 120;
+    let cx = 80;
     let y = 0;
 
     for (const service of Object.values(services.services)) {
