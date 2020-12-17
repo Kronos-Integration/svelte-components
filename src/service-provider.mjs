@@ -28,8 +28,11 @@ class NoneWaitingInitializationContext extends InitializationContext {
   }
 }
 
-export class ServiceProvider extends ServiceProviderMixin(MockService, MockLogger) {
-  static async initialize(json) {
+export class ServiceProvider extends ServiceProviderMixin(
+  MockService,
+  MockLogger
+) {
+  static async initialize(json, requestsStore) {
     let serviceProviderData = {};
     for (const [k, v] of Object.entries(json)) {
       if (v.serviceProvider) {
@@ -77,11 +80,18 @@ export class ServiceProvider extends ServiceProviderMixin(MockService, MockLogge
     services.width = 500;
     services.height = y;
 
+    /*
     services.addRequest({
       endpoint: "service(admin).log",
       arguments: ['arg1']
-    });
+    });*/
 
+    if (requestsStore) {
+      requestsStore.subscribe(request => {
+        console.log("ADD", request);
+        services.addRequest(request);
+      });
+    }
     return services;
   }
 
@@ -92,7 +102,7 @@ export class ServiceProvider extends ServiceProviderMixin(MockService, MockLogge
 
   addRequest(request) {
     const endpoint = this.endpointForExpression(request.endpoint);
-    if(endpoint) {
+    if (endpoint) {
       this.requests.push({ endpoint, arguments: request.arguments });
     }
   }
