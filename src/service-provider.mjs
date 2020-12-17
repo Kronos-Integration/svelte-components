@@ -47,8 +47,8 @@ export class ServiceProvider extends ServiceProviderMixin(MockService, MockLogge
     await services.declareServices(json);
 
     const sh = 50;
-    const sw = 120;
-    let cx = 80;
+    const sw = 100;
+    let cx = 40;
     let y = 0;
 
     for (const service of Object.values(services.services)) {
@@ -77,12 +77,10 @@ export class ServiceProvider extends ServiceProviderMixin(MockService, MockLogge
     services.width = 500;
     services.height = y;
 
-/*
     services.addRequest({
       endpoint: "service(admin).log",
       arguments: ['arg1']
     });
-*/
 
     return services;
   }
@@ -90,7 +88,6 @@ export class ServiceProvider extends ServiceProviderMixin(MockService, MockLogge
   constructor(...args) {
     super(...args);
     this.requests = [];
-
   }
 
   addRequest(request) {

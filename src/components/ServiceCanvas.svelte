@@ -3,7 +3,7 @@
   import { SERVICES } from "../util.mjs";
   import Service from "./Service.svelte";
   import Connection from "./Connection.svelte";
-  import Request from "./Connection.svelte";
+  import Request from "./Request.svelte";
 
   export let services;
 
@@ -12,7 +12,6 @@
   function handleMessage(event) {
     alert(event.detail.text);
   }
-
 </script>
 
 <svg
@@ -50,11 +49,15 @@
     {/each}
   </g>
 
-  {#each [...services.connections()] as [from, to]}
-    <Connection {from} {to} />
-  {/each}
+  <g class="connections">
+    {#each [...services.connections()] as [from, to]}
+      <Connection {from} {to} />
+    {/each}
+  </g>
 
-  {#each services.requests as request}
-    <Request {request} />
-  {/each}
+  <g class="requests">
+    {#each services.requests as request}
+      <Request {request} />
+    {/each}
+  </g>
 </svg>

@@ -81,3 +81,11 @@ svg {
 #dot {
   fill: var(--color-neutral-400);
 }
+
+
+.request {
+  text-anchor: middle;
+  font: 6px sans-serif;
+  overflow: visible;
+  pointer-events: auto;
+}
