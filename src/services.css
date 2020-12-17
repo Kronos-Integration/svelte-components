@@ -48,15 +48,19 @@ svg {
 .running {
   fill: green;
 }
+
 .starting {
   fill: lightgreen;
 }
+
 .stopped {
   fill: gray;
 }
+
 .stopping {
   fill: lightgray;
 }
+
 .failed {
   fill: red;
 }

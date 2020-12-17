@@ -24,6 +24,9 @@
   on:click={click}
   class={endpoint.isOpen ? 'endpoint open' : 'endpoint'}
   transform="translate({endpoint.x},{endpoint.y})">
+
+  <circle cx="0" cy="0" r="4" fill="gray"/>
+
   {#if endpoint.requests}
     {#each endpoint.requests as request, index}
       <text x={75 + index * 12} y="-10">{index}</text>
@@ -32,12 +35,9 @@
   {/if}
 
   {#if endpoint.isIn}
-    <rect x="-5" y="-5" width="10" height="10" />
     {#each [...endpoint.connections()] as connected}
       <Connection from={endpoint} to={connected} />
     {/each}
-  {:else}
-    <circle cx="0" cy="0" r="5" />
   {/if}
 
   {#each endpoint.interceptors as interceptor, i}

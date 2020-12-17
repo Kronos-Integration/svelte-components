@@ -57,7 +57,7 @@ export class Services extends ServiceProviderMixin(MockService, MockLogger) {
       let ey = 10 + 20 + 5;
 
       for (const endpoint of Object.values(service.endpoints)) {
-        endpoint.x = sw - 10;
+        endpoint.x = sw; // - 10;
         endpoint.y = ey;
 
         for (const connection of endpoint.connections()) {

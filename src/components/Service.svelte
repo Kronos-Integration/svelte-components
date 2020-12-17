@@ -32,7 +32,7 @@
     width={service.w}
     height={service.h}
     rx="5" />
-  <text x="8" y="22">{service.name} ({service.type})</text>
+  <text x="8" y="14">{service.name}</text>
   {#each Object.values(service.endpoints) as endpoint}
     <Endpoint {endpoint} />
   {/each}

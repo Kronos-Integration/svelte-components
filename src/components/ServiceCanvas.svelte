@@ -22,7 +22,7 @@
         } else {
           endpoint.requests.push($requests.arguments);
         }
-       // console.log(endpoint.name,endpoint.requests);
+        // console.log(endpoint.name,endpoint.requests);
         services.services = services.services;
       }
     }
@@ -39,22 +39,22 @@
 
     <marker
       id="arrow"
-      viewBox="0 0 10 10"
-      refX="5"
-      refY="5"
+      viewBox="0 0 8 8"
+      refX="6"
+      refY="4"
       markerWidth="6"
       markerHeight="6"
       orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" />
+      <path d="M 0 0 L 8 4 L 0 8 z" />
     </marker>
     <marker
       id="dot"
-      viewBox="0 0 10 10"
-      refX="5"
-      refY="5"
-      markerWidth="5"
-      markerHeight="5">
-      <circle cx="5" cy="5" r="5" fill="black" />
+      viewBox="0 0 8 8"
+      refX="4"
+      refY="4"
+      markerWidth="4"
+      markerHeight="4">
+      <circle cx="4" cy="4" r="4" />
     </marker>
   </defs>
 
