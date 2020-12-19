@@ -2,12 +2,15 @@
   import { setContext } from "svelte";
   import { SERVICE } from "../util.mjs";
   import Endpoint from "./Endpoint.svelte";
+  import ServicePopup from "./ServicePopup.svelte";
 
   export let service;
 
   setContext(SERVICE, service);
 
-  function clickService(event) {}
+  function clickService(event) {
+
+  }
 
   function dragStartService(event) {
     console.log(event);
