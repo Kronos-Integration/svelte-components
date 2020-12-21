@@ -17,7 +17,7 @@
   }
 
   function handleMessage(event) {
-    console.log("Servide handleMessage", event);
+    console.log("Service handleMessage", event);
   }
 </script>
 

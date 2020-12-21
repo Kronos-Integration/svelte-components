@@ -80,18 +80,10 @@ export class ServiceProvider extends ServiceProviderMixin(
     services.width = 500;
     services.height = y;
 
-    /*
-    services.addRequest({
-      endpoint: "service(admin).log",
-      arguments: ['arg1']
-    });*/
-
     if (requestsStore) {
-      requestsStore.subscribe(request => {
-        console.log("ADD", request);
-        services.addRequest(request);
-      });
+      requestsStore.subscribe(request => services.addRequest(request));
     }
+
     return services;
   }
 
@@ -102,6 +94,8 @@ export class ServiceProvider extends ServiceProviderMixin(
 
   addRequest(request) {
     const endpoint = this.endpointForExpression(request.endpoint);
+    console.log("ADD", request);
+
     if (endpoint) {
       this.requests.push({ endpoint, arguments: request.arguments });
     }
