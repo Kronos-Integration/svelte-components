@@ -1,23 +1,18 @@
 <script>
-  import { setContext } from "svelte";
+  import { setContext, createEventDispatcher } from "svelte";
   import { SERVICE } from "../util.mjs";
   import Endpoint from "./Endpoint.svelte";
-  import ServicePopup from "./ServicePopup.svelte";
 
   export let service;
 
   setContext(SERVICE, service);
 
-  function clickService(event) {
+  const dispatch = createEventDispatcher();
 
-  }
-
-  function dragStartService(event) {
-    console.log(event);
-  }
-
-  function handleMessage(event) {
-    console.log("Service handleMessage", event);
+  function click(event) {
+    dispatch("serviceAction", {
+      service
+    });
   }
 </script>
 
@@ -25,9 +20,9 @@
   id={service.name}
   class="service"
   transform="translate({service.x},{service.y})"
-  on:message={handleMessage}
-  on:click={clickService}
-  on:dragstart={dragStartService}>
+  on:endpointAction
+  on:interceptorAction
+  on:click={click}>
   <rect width={service.w} height={service.h} rx="4" />
   <text x="8" y="14">{service.name}</text>
   {#each Object.values(service.endpoints) as endpoint}

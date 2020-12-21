@@ -1,7 +1,6 @@
 <script>
   import { setContext, createEventDispatcher } from "svelte";
   import { ENDPOINT } from "../util.mjs";
-
   import Interceptor from "./Interceptor.svelte";
 
   export let endpoint;
@@ -11,7 +10,7 @@
   const dispatch = createEventDispatcher();
 
   function click() {
-    dispatch("add-endpoint-probe", {
+    dispatch("endpointAction", {
       endpoint
     });
   }
@@ -20,6 +19,7 @@
 <g
   id={endpoint.identifier}
   class="endpoint"
+  on:interceptorAction
   on:click={click}
   transform="translate({endpoint.x},{endpoint.y})">
 

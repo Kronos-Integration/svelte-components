@@ -4,19 +4,34 @@
   import Service from "./Service.svelte";
   import Connection from "./Connection.svelte";
   import Request from "./Request.svelte";
+  import { getAttributes } from "model-attributes";
 
   export let services;
 
   setContext(SERVICES, services);
 
-  function handleMessage(event) {
-    alert(event.detail.text);
+  function serviceAction(event) {
+    alert(event.detail.service);
+  }
+
+  function endpointAction(event) {
+    alert(event.detail.endpoint);
+  }
+
+  function interceptorAction(event) {
+    const interceptor = event.detail.interceptor;
+    let atts = getAttributes(interceptor, interceptor.configurationAttributes);
+    const str =
+      `${interceptor.type}\n` +
+      Object.entries(atts)
+        .map(([k, v]) => `${k}: ${v}`)
+        .join("\n");
+
+    alert(str);
   }
 </script>
 
-<svg
-  viewbox="0 0 {services.width} {services.height}"
-  on:message={handleMessage}>
+<svg viewbox="0 0 {services.width} {services.height}">
   <defs>
     <symbol id="interceptor" width="10" height="10" viewBox="0 0 2 2">
       <circle class="interceptor" cx="0" cy="0" r="5" />
@@ -45,7 +60,11 @@
 
   <g class="services">
     {#each Object.values(services.services) as service}
-      <Service {service} />
+      <Service
+        {service}
+        on:serviceAction={serviceAction}
+        on:endpointAction={endpointAction}
+        on:interceptorAction={interceptorAction} />
     {/each}
   </g>
 

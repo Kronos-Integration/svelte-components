@@ -116,8 +116,4 @@ export class ServiceProvider extends ServiceProviderMixin(
       }
     }
   }
-
-  addEndpointProbe(endpoint) {
-    console.log("add probe", endpoint);
-  }
 }

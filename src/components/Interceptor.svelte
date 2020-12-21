@@ -1,22 +1,18 @@
 <script>
-  import { setContext } from "svelte";
+  import { setContext, createEventDispatcher } from "svelte";
   import { INTERCEPTOR } from "../util.mjs";
-  import { getAttributes } from "model-attributes";
 
   export let interceptor;
   export let cx;
   export let cy;
   setContext(INTERCEPTOR, interceptor);
 
-  function click() {
-    let atts = getAttributes(interceptor, interceptor.configurationAttributes);
-    const str =
-      `${interceptor.type}\n` +
-      Object.entries(atts)
-        .map(([k, v]) => `${k}: ${v}`)
-        .join("\n");
+  const dispatch = createEventDispatcher();
 
-    alert(str);
+  function click(event) {
+    dispatch("interceptorAction", {
+      interceptor
+    });
   }
 </script>
 
