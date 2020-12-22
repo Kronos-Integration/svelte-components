@@ -32,32 +32,43 @@ export class ServiceProvider extends ServiceProviderMixin(
   MockService,
   MockLogger
 ) {
-  static async initialize(json, requestsStore) {
-    let serviceProviderData = {};
-    for (const [k, v] of Object.entries(json)) {
-      if (v.serviceProvider) {
-        serviceProviderData = v;
-        delete json[k];
-        break;
-      }
+  constructor(serviceStore, requestsStore) {
+    super({}, new NoneWaitingInitializationContext());
+    this.subscriptions = new Set();
+    this.requests = [];
+
+    if (serviceStore) {
+      serviceStore.subscribe(services => this.initialize(services));
     }
 
-    const services = new ServiceProvider(
-      serviceProviderData,
-      new NoneWaitingInitializationContext()
-    );
+    if (requestsStore) {
+      requestsStore.subscribe(request => this.addRequest(request));
+    }
+  }
 
-    await services.declareServices(json);
+  subscribe(cb) {
+    this.subscriptions.add(cb);
+    cb(this);
+    return () => this.subscriptions.delete(cb);
+  }
 
-    const sh = 50;
+  fireSubscriptions() {
+    if (this.subscriptions) {
+      this.subscriptions.forEach(s => s(this));
+    }
+  }
+
+  async initialize(json) {
+    await this.declareServices(json);
+
     const sw = 100;
     let cx = 40;
     let y = 0;
 
-    for (const service of Object.values(services.services)) {
+    for (const service of Object.values(this.services)) {
       service.x = 10;
       service.y = y;
-      let ey = 10 + 20 + 5;
+      let ey = 18;
 
       for (const endpoint of Object.values(service.endpoints)) {
         endpoint.x = sw;
@@ -72,24 +83,15 @@ export class ServiceProvider extends ServiceProviderMixin(
       }
 
       service.w = sw;
-      service.h = ey > sh ? ey : sh;
+      service.h = ey;
 
-      y += service.h + 10;
+      y += service.h + 6;
     }
 
-    services.width = 500;
-    services.height = y;
+    this.width = 500;
+    this.height = y;
 
-    if (requestsStore) {
-      requestsStore.subscribe(request => services.addRequest(request));
-    }
-
-    return services;
-  }
-
-  constructor(...args) {
-    super(...args);
-    this.requests = [];
+    this.fireSubscriptions();
   }
 
   addRequest(request) {
@@ -101,7 +103,8 @@ export class ServiceProvider extends ServiceProviderMixin(
     }
   }
 
-  *connections() {
+  get connections() {
+    const connections = [];
     const delivered = new Set();
     for (const service of Object.values(this.services)) {
       for (const endpoint of Object.values(service.endpoints)) {
@@ -110,10 +113,11 @@ export class ServiceProvider extends ServiceProviderMixin(
           if (!delivered.has(key)) {
             delivered.add(key);
             delivered.add(connection.identifier + "-" + endpoint.identifier);
-            yield [endpoint, connection];
+            connections.push([endpoint, connection]);
           }
         }
       }
     }
+    return connections;
   }
 }

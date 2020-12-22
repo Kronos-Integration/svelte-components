@@ -10,6 +10,14 @@
 
   setContext(SERVICES, services);
 
+  //const s = $services;
+
+  let s;
+  
+  $: {
+    s = $services;
+  }
+
   function serviceAction(event) {
     alert(event.detail.service);
   }
@@ -31,7 +39,7 @@
   }
 </script>
 
-<svg viewbox="0 0 {services.width} {services.height}">
+<svg viewbox="0 0 {s.width} {s.height}">
   <defs>
     <symbol id="interceptor" width="10" height="10" viewBox="0 0 2 2">
       <circle class="interceptor" cx="0" cy="0" r="5" />
@@ -59,7 +67,7 @@
   </defs>
 
   <g class="services">
-    {#each Object.values(services.services) as service}
+    {#each Object.values(s.services) as service}
       <Service
         {service}
         on:serviceAction={serviceAction}
@@ -69,13 +77,13 @@
   </g>
 
   <g class="connections">
-    {#each [...services.connections()] as [from, to]}
+    {#each s.connections as [from, to]}
       <Connection {from} {to} />
     {/each}
   </g>
 
   <g class="requests">
-    {#each services.requests as request}
+    {#each s.requests as request}
       <Request {request} />
     {/each}
   </g>
