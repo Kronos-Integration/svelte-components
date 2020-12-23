@@ -81,7 +81,7 @@ export class ServiceProvider extends ServiceProviderMixin(
           connection.rx = cx;
         }
 
-        ey += 12;
+        ey += 10;
       }
 
       service.w = sw;

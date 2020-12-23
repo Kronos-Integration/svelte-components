@@ -16,4 +16,4 @@
   }
 </script>
 
-<circle class="interceptor" {cx} {cy} r="5" on:click={click} />
+<circle class="interceptor" {cx} {cy} r="4" on:click={click} />

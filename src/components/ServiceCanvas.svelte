@@ -55,11 +55,11 @@
       id="arrow"
       viewBox="0 0 8 8"
       refX="6"
-      refY="4"
+      refY="3"
       markerWidth="6"
       markerHeight="6"
       orient="auto-start-reverse">
-      <path d="M 0 0 L 8 4 L 0 8 z" />
+      <path d="M0 0 L6 3 L0 6z" />
     </marker>
     <marker
       id="dot"
@@ -68,7 +68,7 @@
       refY="4"
       markerWidth="4"
       markerHeight="4">
-      <circle cx="4" cy="4" r="4" />
+      <circle cx="4" cy="4" r="3" />
     </marker>
   </defs>
 

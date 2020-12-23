@@ -23,9 +23,9 @@
   transform="translate({endpoint.x},{endpoint.y})">
 
   <text x="-6px" y="1px">{endpoint.name}</text>
-  <circle r="4"/>
+  <circle r="3"/>
   
   {#each endpoint.interceptors as interceptor, i}
-    <Interceptor on:interceptorAction {interceptor} cx={20 + 12 * i} cy={0} />
+    <Interceptor on:interceptorAction {interceptor} cx={10 + 10 * i} cy={0} />
   {/each}
 </g>
