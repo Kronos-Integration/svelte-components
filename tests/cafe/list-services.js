@@ -14,6 +14,8 @@ test("list services", async t => {
   await t.expect(service.innerText).contains("logger (logger)");
 */
 
+  await t.wait(1000);
+
   const adminServiceExists = Selector('#admin').exists;
   await t.expect(adminServiceExists).ok();
 
