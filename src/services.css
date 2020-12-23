@@ -20,6 +20,10 @@ svg {
   fill: var(--color-neutral-50);
 }
 
+.service:hover rect {
+  fill: var(--color-neutral-200);
+}
+
 .service circle {
   stroke: var(--color-neutral-300);
   fill: var(--color-neutral-50);
@@ -34,7 +38,6 @@ svg {
 
 .endpoint:hover {
   stroke: red;
-  pointer-events: auto;
 }
 
 .interceptor:hover {
@@ -88,7 +91,6 @@ svg {
 #dot {
   fill: var(--color-neutral-400);
 }
-
 
 .request {
   text-anchor: middle;
