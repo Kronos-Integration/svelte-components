@@ -43,6 +43,9 @@ export class ServiceProvider extends ServiceProviderMixin(
     if (requestsStore) {
       requestsStore.subscribe(request => this.addRequest(request));
     }
+
+    this.width = 500;
+    this.height = 500;
   }
 
   subscribe(cb) {
@@ -87,7 +90,6 @@ export class ServiceProvider extends ServiceProviderMixin(
       y += service.h + 6;
     }
 
-    this.width = 500;
     this.height = y;
 
     this.fireSubscriptions();

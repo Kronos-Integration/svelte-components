@@ -48,7 +48,7 @@
 <svg viewbox="0 0 {s.width} {s.height}">
   <defs>
     <symbol id="interceptor" width="10" height="10" viewBox="0 0 2 2">
-      <circle class="interceptor" cx="0" cy="0" r="5" />
+      <circle class="interceptor" r="5" />
     </symbol>
 
     <marker
