@@ -6,7 +6,6 @@ import { MockService } from "./mock-service.mjs";
 import { MockLogger } from "./mock-logger.mjs";
 
 globalThis.process = { env: {} };
-globalThis.Buffer = class Buffer {};
 
 class NoneWaitingInitializationContext extends InitializationContext {
   async getServiceFactory(type) {
