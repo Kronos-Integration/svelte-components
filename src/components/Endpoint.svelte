@@ -19,7 +19,6 @@
 <g
   id={endpoint.identifier}
   class="endpoint"
-  on:interceptorAction
   on:click={click}
   transform="translate({endpoint.x},{endpoint.y})">
 
@@ -27,6 +26,6 @@
   <circle r="4"/>
   
   {#each endpoint.interceptors as interceptor, i}
-    <Interceptor {interceptor} cx={20 + 12 * i} cy={0} />
+    <Interceptor on:interceptorAction {interceptor} cx={20 + 12 * i} cy={0} />
   {/each}
 </g>

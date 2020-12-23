@@ -3,20 +3,11 @@
   import { writable } from "svelte/store";
   import { ServiceCanvas, ServiceProvider } from "../../../src/index.svelte";
   import { data } from "./data.mjs";
-  import { onMount } from "svelte";
 
-  export const serviceData = writable(data);
-
-  let services = new ServiceProvider(serviceData);
-
-  /*
-  onMount(() => {
-    setTimeout(() => {
-      services.fireSubscriptions();
-    }, 1000);
+  export const serviceData = writable(data, command => {
+    console.log(command);
   });
-  */
-
+  const services = new ServiceProvider(serviceData);
 </script>
 
 <ServiceCanvas {services} />

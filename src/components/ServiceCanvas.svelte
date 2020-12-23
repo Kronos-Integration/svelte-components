@@ -10,20 +10,26 @@
 
   setContext(SERVICES, services);
 
-  //const s = $services;
-
   let s;
-  
+
   $: {
     s = $services;
   }
 
   function serviceAction(event) {
     alert(event.detail.service);
+    $services = { service: event.detail.service.name, action: "start" };
   }
 
   function endpointAction(event) {
     alert(event.detail.endpoint);
+
+    $services = {
+      action: "insert",
+      service: event.detail.endpoint.owner.name,
+      endpoint: event.detail.endpoint.name,
+      interceptors: [{ type: "live-probe" }]
+    };
   }
 
   function interceptorAction(event) {
@@ -70,9 +76,9 @@
     {#each Object.values(s.services) as service}
       <Service
         {service}
-        on:serviceAction={serviceAction}
         on:endpointAction={endpointAction}
-        on:interceptorAction={interceptorAction} />
+        on:interceptorAction={interceptorAction}
+        on:serviceAction={serviceAction} />
     {/each}
   </g>
 
