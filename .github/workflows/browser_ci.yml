@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '${{ matrix.node }}'
       - run: npm install
-      - run: rollup -c tests/app/rollup.config.mjs
+      - run: ./node_modules/.bin/rollup -c tests/app/rollup.config.mjs
       - run: npm test
         env:
           BROWSER: '${{ matrix.browser }}'
