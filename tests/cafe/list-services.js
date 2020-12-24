@@ -8,12 +8,13 @@ const base = "http://localhost:5000";
 fixture`Getting Started`.page`${base}/index.html`;
 
 test("list services", async t => {
-  
 /*
   const service = Selector(".service");
   await t.expect(service.innerText).contains("logger");
 */
 
+  const { error } = await t.getBrowserConsoleMessages();
+  console.log(error);
   await t.wait(1000);
   await t.takeScreenshot();
 
