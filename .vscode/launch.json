@@ -9,16 +9,6 @@
       "runtimeArgs": ["--serial", "${file}"],
       "outputCapture": "std",
       "skipFiles": ["<node_internals>/**/*"]
-    },
-    {
-      "type": "node",
-      "protocol": "inspector",
-      "request": "launch",
-      "name": "TestCafe",
-      "program": "${workspaceRoot}/node_modules/testcafe/bin/testcafe.js",
-      "args": ["safari", "${relativeFile}"],
-      "console": "integratedTerminal",
-      "cwd": "${workspaceRoot}"
     }
   ]
 }
