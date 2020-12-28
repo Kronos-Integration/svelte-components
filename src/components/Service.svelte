@@ -1,6 +1,7 @@
 <script>
-  import { setContext, createEventDispatcher } from "svelte";
+  import { setContext, createEventDispatcher, onMount } from "svelte";
   import { SERVICE } from "../util.mjs";
+  import { makeDraggable } from "../dragging.mjs";
   import Endpoint from "./Endpoint.svelte";
 
   export let service;
@@ -14,9 +15,19 @@
       service
     });
   }
+
+  let element;
+
+  onMount(() => {
+    makeDraggable(element,() => {
+      console.log("dragged");
+    });
+  });
+
 </script>
 
 <g
+  bind:this={element}
   id={service.name}
   class="service"
   transform="translate({service.x},{service.y})"
