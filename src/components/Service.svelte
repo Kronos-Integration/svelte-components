@@ -1,6 +1,6 @@
 <script>
-  import { setContext, createEventDispatcher, onMount } from "svelte";
-  import { SERVICE } from "../util.mjs";
+  import { getContext, setContext, createEventDispatcher, onMount } from "svelte";
+  import { SERVICE, SERVICES } from "../util.mjs";
   import { makeDraggable } from "../dragging.mjs";
   import Endpoint from "./Endpoint.svelte";
 
@@ -18,9 +18,12 @@
 
   let element;
 
+//  const services = getContext(SERVICES);
+
   onMount(() => {
     makeDraggable(element,() => {
-      console.log("dragged");
+      //services.fireSubscriptions();
+      //console.log("dragged",services);
     });
   });
 

@@ -37,10 +37,12 @@ export class ServiceProvider extends ServiceProviderMixin(
     this.requests = [];
 
     if (serviceStore) {
+      this.serviceStore = serviceStore;
       serviceStore.subscribe(services => this.initialize(services));
     }
 
     if (requestsStore) {
+      this.requestsStore = requestsStore;
       requestsStore.subscribe(request => this.addRequest(request));
     }
 

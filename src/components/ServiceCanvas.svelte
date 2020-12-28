@@ -17,19 +17,21 @@
   }
 
   function serviceAction(event) {
-    alert(event.detail.service);
-    $services = { service: event.detail.service.name, action: "start" };
+    services.serviceStore.set({
+      service: event.detail.service.name,
+      action: "start"
+    });
   }
 
   function endpointAction(event) {
     alert(event.detail.endpoint);
 
-    $services = {
+    services.serviceStore.set({
       action: "insert",
       service: event.detail.endpoint.owner.name,
       endpoint: event.detail.endpoint.name,
       interceptors: [{ type: "live-probe" }]
-    };
+    });
   }
 
   function interceptorAction(event) {
