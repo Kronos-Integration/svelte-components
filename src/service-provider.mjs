@@ -63,17 +63,18 @@ export class ServiceProvider extends ServiceProviderMixin(
   async initialize(json) {
     await this.declareServices(json);
 
-    const sw = 100;
     let cx = 40;
     let y = 0;
 
     for (const service of Object.values(this.services)) {
       service.x = 10;
+      service.w = 100;
       service.y = y;
+
       let ey = 18;
 
       for (const endpoint of Object.values(service.endpoints)) {
-        endpoint.x = sw;
+        endpoint.x = service.w;
         endpoint.y = ey;
 
         for (const connection of endpoint.connections()) {
@@ -84,7 +85,6 @@ export class ServiceProvider extends ServiceProviderMixin(
         ey += 10;
       }
 
-      service.w = sw;
       service.h = ey;
 
       y += service.h + 6;
