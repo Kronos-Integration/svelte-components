@@ -13,11 +13,6 @@ test("list services", async t => {
   await t.expect(service.innerText).contains("logger");
 */
 
-  const { error } = await t.getBrowserConsoleMessages();
-  console.log(error);
-  await t.wait(1000);
-  await t.takeScreenshot();
-
   const adminServiceExists = Selector('#admin').exists;
   await t.expect(adminServiceExists).ok();
 
