@@ -99,7 +99,6 @@ export class ServiceProvider extends ServiceProviderMixin(
 
   addRequest(request) {
     const endpoint = this.endpointForExpression(request.endpoint);
-    console.log("ADD", request);
 
     if (endpoint) {
       this.requests.push({ endpoint, arguments: request.arguments });
@@ -112,6 +111,11 @@ export class ServiceProvider extends ServiceProviderMixin(
     for (const service of Object.values(this.services)) {
       for (const endpoint of Object.values(service.endpoints)) {
         for (const connection of endpoint.connections()) {
+          if(!connection.x || !connection.y) {
+            //console.log(endpoint.identifier, "no valid connection", connection);
+            continue;
+          }
+
           const key = endpoint.identifier + "-" + connection.identifier;
           if (!delivered.has(key)) {
             delivered.add(key);
