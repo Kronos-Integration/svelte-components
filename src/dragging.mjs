@@ -8,13 +8,13 @@ export function makeDraggable(el,cb) {
   let xlate, txStartX, txStartY, mouseStart;
   let xforms = el.transform.baseVal;
 
-  el.addEventListener("mousedown", startMove, false);
+  el.addEventListener("pointerdown", startMove, false);
 
   function startMove(evt) {
     // We listen for mousemove/up on the root-most
     // element in case the mouse is not over el.
-    root.addEventListener("mousemove", handleMove, false);
-    root.addEventListener("mouseup", finishMove, false);
+    root.addEventListener("pointermove", handleMove, false);
+    root.addEventListener("pointerup", finishMove, false);
 
     // Ensure that the first transform is a translate()
     xlate = xforms.numberOfItems > 0 && xforms.getItem(0);
@@ -38,8 +38,8 @@ export function makeDraggable(el,cb) {
   }
 
   function finishMove(evt) {
-    root.removeEventListener("mousemove", handleMove, false);
-    root.removeEventListener("mouseup", finishMove, false);
+    root.removeEventListener("pointermove", handleMove, false);
+    root.removeEventListener("pointerup", finishMove, false);
     fireEvent("dragend");
     cb();
   }
