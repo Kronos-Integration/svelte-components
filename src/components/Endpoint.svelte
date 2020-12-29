@@ -26,6 +26,6 @@
   <circle r="3"/>
   
   {#each endpoint.interceptors as interceptor, i}
-    <Interceptor on:interceptorAction {interceptor} cx={10 + 10 * i} cy={0} />
+    <Interceptor on:interceptorAction {interceptor} x={10 + 10 * i} y={0} />
   {/each}
 </g>

@@ -3,8 +3,8 @@
   import { INTERCEPTOR } from "../util.mjs";
 
   export let interceptor;
-  export let cx;
-  export let cy;
+  export let x;
+  export let y;
   setContext(INTERCEPTOR, interceptor);
 
   const dispatch = createEventDispatcher();
@@ -14,6 +14,10 @@
       interceptor
     });
   }
+
+  const knownInterceptorTypes = new Set(["live-probe","ctx","ctx-jwt-verify","ctx-body-param" ]);
+
+  const href = knownInterceptorTypes.has(interceptor.type) ? '#' + interceptor.type : "#interceptor"
 </script>
 
-<circle class="interceptor" {cx} {cy} r="4" on:click={click} />
+<use {href} {x} {y} on:click={click}/>

@@ -198,6 +198,7 @@ export const data = {
         open: true,
         connected: "service(ldap).search",
         interceptors: [
+          { type: "live-probe" },
           { type: "ctx-jwt-verify" },
           { type: "ctx", headers: {} },
           {
