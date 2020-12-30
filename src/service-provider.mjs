@@ -19,12 +19,6 @@ class NoneWaitingInitializationContext extends InitializationContext {
   get waitForFactories() {
     return false;
   }
-
-  connectEndpoint(endpoint, connected) {
-    try {
-      super.connectEndpoint(endpoint, connected);
-    } catch (e) {}
-  }
 }
 
 export class ServiceProvider extends ServiceProviderMixin(
