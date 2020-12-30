@@ -1,6 +1,11 @@
 <script>
-  import { getContext, setContext, createEventDispatcher, onMount } from "svelte";
-  import { SERVICE, SERVICES } from "../util.mjs";
+  import {
+    getContext,
+    setContext,
+    createEventDispatcher,
+    onMount
+  } from "svelte";
+  import { SERVICE, connectionPath } from "../util.mjs";
   import { makeDraggable } from "../dragging.mjs";
   import Endpoint from "./Endpoint.svelte";
 
@@ -18,15 +23,23 @@
 
   let element;
 
-//  const services = getContext(SERVICES);
-
   onMount(() => {
-    makeDraggable(element,() => {
-      //services.fireSubscriptions();
-      //console.log("dragged",services);
+    makeDraggable(element, () => {
+      for (const [n, endpoint] of Object.entries(service.endpoints)) {
+        for (const connection of endpoint.connections()) {
+          const c = document.getElementById(
+            endpoint.identifier + ":" + connection.identifier
+          );
+          if(c) {
+            c.setAttribute("d", connectionPath(endpoint, connection));
+          }
+          else {
+            console.log("missing", endpoint.identifier + ":" + connection.identifier);
+          }
+        }
+      }
     });
   });
-
 </script>
 
 <g

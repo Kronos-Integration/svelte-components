@@ -59,12 +59,12 @@ export class ServiceProvider extends ServiceProviderMixin(
   async initialize(json) {
     await this.declareServices(json);
 
-    let cx = 40;
+    let cx = 0;
     let y = 0;
 
     for (const service of Object.values(this.services)) {
       service.x = 10;
-      service.w = 100;
+      service.w = 90;
       service.y = y;
 
       let ey = 18;
@@ -74,7 +74,7 @@ export class ServiceProvider extends ServiceProviderMixin(
         endpoint.y = ey;
 
         for (const connection of endpoint.connections()) {
-          cx = cx + 5;
+          cx = cx + 4;
           connection.rx = cx;
         }
 
@@ -105,7 +105,7 @@ export class ServiceProvider extends ServiceProviderMixin(
     for (const service of Object.values(this.services)) {
       for (const endpoint of Object.values(service.endpoints)) {
         for (const connection of endpoint.connections()) {
-          if(!connection.x || !connection.y) {
+          if(!connection.x || !connection.y || !endpoint.x || !endpoint.y) {
             //console.log(endpoint.identifier, "no valid connection", connection);
             continue;
           }
