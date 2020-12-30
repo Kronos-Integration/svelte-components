@@ -16,6 +16,7 @@ test("list services", async t => {
   const adminServiceExists = Selector('#admin').exists;
   await t.expect(adminServiceExists).ok();
 
+  t.takeScreenshot();
 /*
   const endpointExists = Selector('#service(logger).log').exists;
   await t.expect(endpointExists).ok();
