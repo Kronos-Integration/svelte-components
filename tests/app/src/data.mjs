@@ -57,15 +57,13 @@ export const data = {
     name: "http",
     state: "running",
     logLevel: "trace",
-    description: "http server",
-    timeout: { server: 120, start: 20, stop: 20, restart: 20 },
-    jwt: {
-    },
+    jwt: {},
     listen: {
       url: "https://mfelten.dynv6.net/services/entitlements/api",
       socket: { fd: 3, name: "http.listen.socket" }
     },
-    url: "https://mfelten.dynv6.net/services/entitlements/api",
+    timeout: { start: 20, stop: 20, restart: 20, server: 120 },
+    description: "http server",
     endpoints: {
       log: { out: true, open: true, connected: "service(logger).log" },
       config: { in: true, open: true },
@@ -100,14 +98,15 @@ export const data = {
         out: true,
         open: true,
         connected: "service(admin).services",
-        interceptors: [{ type: "decode-json" }, { type: "live-probe" }]
+        interceptors: [{ type: "decode-json" }]
       },
       "/admin/requests": {
         path: "/admin/requests",
         ws: true,
         in: true,
         out: true,
-        connected: "service(admin).requests",
+        open: true,
+        connected: "service(admin).requests[C]",
         interceptors: [{ type: "decode-json" }]
       },
       "/authenticate": {
@@ -135,8 +134,7 @@ export const data = {
               attributes: ["cn"],
               filter: "(objectclass=groupOfUniqueNames)"
             }
-          },
-          { type: "live-probe" }
+          }
         ]
       },
       "/user": {
@@ -155,8 +153,7 @@ export const data = {
               scope: "children",
               filter: "(objectclass=posixAccount)"
             }
-          },
-          { type: "live-probe" }
+          }
         ]
       },
       "PUT:/user": {
@@ -280,8 +277,7 @@ export const data = {
     state: "stopped",
     logLevel: "trace",
     description: "provide authentication services",
-    timeout: { server: 120, start: 20, stop: 20, restart: 20 },
-    listen: {},
+    timeout: { start: 20, stop: 20, restart: 20, server: 120 },
     endpoints: {
       log: { out: true, open: true, connected: "service(logger).log" },
       config: { in: true, open: true },
@@ -303,13 +299,6 @@ export const data = {
     name: "ldap",
     state: "stopped",
     logLevel: "trace",
-    description: "LDAP server access for bind/add/modify/del/query",
-    timeout: { server: 120, start: 20, stop: 20, restart: 20 },
-    jwt: {
-      access_token: { algorithm: "RS256", expiresIn: "1h" },
-      refresh_token: { algorithm: "RS256", expiresIn: "30d" }
-    },
-    listen: {},
     url: "ldaps://mfelten.dynv6.net",
     entitlements: {
       bindDN: "uid={{username}},ou=accounts,dc=mf,dc=de",
@@ -319,6 +308,8 @@ export const data = {
       filter:
         "(&(objectclass=groupOfUniqueNames)(uniqueMember=uid={{username}},ou=accounts,dc=mf,dc=de))"
     },
+    description: "LDAP server access for bind/add/modify/del/query",
+    timeout: { start: 20, stop: 20, restart: 20, server: 120 },
     endpoints: {
       log: { out: true, open: true, connected: "service(logger).log" },
       config: { in: true, open: true },
@@ -364,13 +355,7 @@ export const data = {
     uptimeInterval: 30,
     resourceUsageInterval: 30,
     description: "This service is the base class for service implementations",
-    timeout: { server: 120, start: 20, stop: 20, restart: 20 },
-    jwt: {
-      access_token: { algorithm: "RS256", expiresIn: "1h" },
-      refresh_token: { algorithm: "RS256", expiresIn: "30d" }
-    },
-    listen: {},
-    entitlements: { attribute: "cn", scope: "sub" },
+    timeout: { start: 20, stop: 20, restart: 20, server: 120 },
     endpoints: {
       log: { out: true, open: true, connected: "service(logger).log" },
       config: { in: true, open: true },
@@ -402,13 +387,7 @@ export const data = {
     state: "stopped",
     logLevel: "trace",
     description: "Live administration of kronos services",
-    timeout: { server: 120, start: 20, stop: 20, restart: 20 },
-    jwt: {
-      access_token: { algorithm: "RS256", expiresIn: "1h" },
-      refresh_token: { algorithm: "RS256", expiresIn: "30d" }
-    },
-    listen: {},
-    entitlements: { attribute: "cn", scope: "sub" },
+    timeout: { start: 20, stop: 20, restart: 20, server: 120 },
     endpoints: {
       log: { out: true, open: true, connected: "service(logger).log" },
       config: { in: true, open: true },
@@ -419,7 +398,7 @@ export const data = {
         open: true,
         connected: "service(http)./admin/services"
       },
-      requests: { out: true, connected: "service(http)./admin/requests" }
+      requests: { out: true, connected: "service(http)./admin/requests[T]" }
     }
   },
   smtp: {
@@ -427,17 +406,11 @@ export const data = {
     name: "smtp",
     state: "stopped",
     logLevel: "trace",
-    description: "This service is the base class for service implementations",
-    timeout: { server: 120, start: 20, stop: 20, restart: 20 },
-    jwt: {
-      access_token: { algorithm: "RS256", expiresIn: "1h" },
-      refresh_token: { algorithm: "RS256", expiresIn: "30d" }
-    },
-    listen: {},
-    entitlements: { attribute: "cn", scope: "sub" },
     port: 25,
     secure: false,
     auth: {},
+    description: "This service is the base class for service implementations",
+    timeout: { start: 20, stop: 20, restart: 20, server: 120 },
     endpoints: {
       log: { out: true, open: true, connected: "service(logger).log" },
       config: { in: true, open: true },
