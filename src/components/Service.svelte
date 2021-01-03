@@ -24,17 +24,21 @@
   let element;
 
   onMount(() => {
-    makeDraggable(element, () => {
+    makeDraggable(element, (x, y) => {
+      service.x = x;
+      service.y = y;
       for (const [n, endpoint] of Object.entries(service.endpoints)) {
         for (const connection of endpoint.connections()) {
           const c = document.getElementById(
             endpoint.identifier + ":" + connection.identifier
           );
-          if(c) {
+          if (c) {
             c.setAttribute("d", connectionPath(endpoint, connection));
-          }
-          else {
-            console.log("missing", endpoint.identifier + ":" + connection.identifier);
+          } else {
+            console.log(
+              "missing",
+              endpoint.identifier + ":" + connection.identifier
+            );
           }
         }
       }

@@ -31,8 +31,8 @@ export function makeDraggable(el,cb) {
   function handleMove(evt) {
     const point = inElementSpace(evt);
     xlate.setTranslate(
-      txStartX + point.x - mouseStart.x,
-      txStartY + point.y - mouseStart.y
+      Math.round(txStartX + point.x - mouseStart.x),
+      Math.round(txStartY + point.y - mouseStart.y)
     );
     fireEvent("drag");
   }
@@ -41,7 +41,8 @@ export function makeDraggable(el,cb) {
     root.removeEventListener("pointermove", handleMove, false);
     root.removeEventListener("pointerup", finishMove, false);
     fireEvent("dragend");
-    cb();
+
+    cb(xlate.matrix.e,xlate.matrix.f);
   }
 
   function fireEvent(eventName) {
