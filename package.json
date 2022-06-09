@@ -30,7 +30,7 @@
   "dependencies": {
     "@kronos-integration/endpoint": "^9.4.30",
     "@kronos-integration/service": "^10.4.24",
-    "svelte-guard-history-router": "^4.6.12"
+    "svelte-guard-history-router": "^4.6.14"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
