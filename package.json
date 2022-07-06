@@ -28,8 +28,8 @@
     "lint:docs": "documentation lint ./src/**/*.mjs"
   },
   "dependencies": {
-    "@kronos-integration/endpoint": "^9.4.30",
-    "@kronos-integration/service": "^10.4.24",
+    "@kronos-integration/endpoint": "^9.4.31",
+    "@kronos-integration/service": "^10.4.25",
     "svelte-guard-history-router": "^4.6.23"
   },
   "devDependencies": {
