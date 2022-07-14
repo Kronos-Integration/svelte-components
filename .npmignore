@@ -1,6 +1,5 @@
 build
 tests
-rollup.config.*
 doc
 *.log
 *.tmp
@@ -8,3 +7,4 @@ doc
 .tmp
 .vscode
 .github
+vite.config.js
