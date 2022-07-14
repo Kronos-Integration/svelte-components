@@ -3,9 +3,9 @@ import { Selector, ClientFunction } from "testcafe";
 const getLocation = ClientFunction(() => window.location.href);
 const goBack = ClientFunction(() => window.history.back());
 
-const base = "http://localhost:5000";
+const base = "http://localhost:5173/examples/kronos-svelte-components/";
 
-fixture`Getting Started`.page`${base}/index.html`;
+fixture`Getting Started`.page`${base}`;
 
 test("list services", async t => {
 /*
