@@ -1,9 +1,9 @@
 import { Interceptor } from "@kronos-integration/interceptor";
 
 export class MockInterceptor extends Interceptor {
-  #config;
+
   #type;
-  #ca;
+  #config;
 
   constructor(config) {
     super(config);
@@ -12,9 +12,8 @@ export class MockInterceptor extends Interceptor {
     }
     this.#config = config;
     this.#type = config.type;
-    //delete config.type;
 
-    this.#ca = Object.fromEntries(Object.keys(this.#config).map(k => [k, {}]));
+    this._ca = Object.fromEntries(Object.keys(this.#config).map(k => [k, {}]));
   }
 
   get type() {
@@ -22,6 +21,6 @@ export class MockInterceptor extends Interceptor {
   }
 
   get configurationAttributes() {
-    return this.#ca || super.configurationAttributes;
+    return this._ca || super.configurationAttributes;
   }
 }
