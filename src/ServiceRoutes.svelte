@@ -7,13 +7,14 @@
 </script>
 
 <Route path="service" component={ServicesPage} objectInstance={Service}>
-  <Route path="/:service" propertyMapping={{ service: 'name' }}>
+  <Route path="/:service" propertyMapping={{ service: "name" }}>
     <Route path="/endpoint" objectInstance={Endpoint}>
-      <Route path="/:endpoint" propertyMapping={{ endpoint: 'name' }}>
+      <Route path="/:endpoint" propertyMapping={{ endpoint: "name" }}>
         <Route path="interceptor" objectInstance={Interceptor}>
           <Route
             path="/:interceptor"
-            propertyMapping={{ interceptor: 'type' }} />
+            propertyMapping={{ interceptor: "type" }}
+          />
         </Route>
       </Route>
     </Route>

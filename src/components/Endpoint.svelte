@@ -20,11 +20,11 @@
   id={endpoint.identifier}
   class="endpoint"
   on:click={click}
-  transform="translate({endpoint.x},{endpoint.y})">
-
+  transform="translate({endpoint.x},{endpoint.y})"
+>
   <text x="-6px" y="1px">{endpoint.name}</text>
-  <circle r="3"/>
-  
+  <circle r="3" />
+
   {#each endpoint.interceptors as interceptor, i}
     <Interceptor on:interceptorAction {interceptor} x={10 + 10 * i} y={0} />
   {/each}

@@ -1,5 +1,4 @@
 import { Service } from "@kronos-integration/service";
-
 import { MockInterceptor } from "./mock-interceptor.mjs";
 
 /**

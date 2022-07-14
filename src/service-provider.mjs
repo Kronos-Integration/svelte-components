@@ -105,7 +105,7 @@ export class ServiceProvider extends ServiceProviderMixin(
     for (const service of Object.values(this.services)) {
       for (const endpoint of Object.values(service.endpoints)) {
         for (const connection of endpoint.connections()) {
-          if(!connection.x || !connection.y || !endpoint.x || !endpoint.y) {
+          if (!connection.x || !connection.y || !endpoint.x || !endpoint.y) {
             //console.log(endpoint.identifier, "no valid connection", connection);
             continue;
           }

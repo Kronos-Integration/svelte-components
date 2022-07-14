@@ -1,4 +1,4 @@
-export function makeDraggable(el,cb) {
+export function makeDraggable(el, cb) {
   let svg = el;
   while (svg && svg.tagName != "svg") svg = svg.parentNode;
   const pt = svg.createSVGPoint(),
@@ -42,7 +42,7 @@ export function makeDraggable(el,cb) {
     root.removeEventListener("pointerup", finishMove, false);
     fireEvent("dragend");
 
-    cb(xlate.matrix.e,xlate.matrix.f);
+    cb(xlate.matrix.e, xlate.matrix.f);
   }
 
   function fireEvent(eventName) {

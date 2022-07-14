@@ -1,5 +1,4 @@
 <script>
-  import * as style from "./main.css";
   import { writable } from "svelte/store";
   import { ServiceCanvas, ServiceProvider } from "../../../src/index.svelte";
   import { data } from "./data.mjs";
