@@ -64,7 +64,6 @@
       "${nginx.sites.dir}${name}.conf": "pkg/nginx.conf"
     },
     "groups": "examples",
-    "http.base.path": "/examples",
     "name": "kronos-svelte-components"
   },
   "release": {
