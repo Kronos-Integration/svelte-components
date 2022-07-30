@@ -41,7 +41,7 @@
     "@semantic-release/release-notes-generator": "^10.0.3",
     "@sveltejs/vite-plugin-svelte": "^1.0.1",
     "documentation": "^13.2.5",
-    "npm-pkgbuild": "^10.11.3",
+    "npm-pkgbuild": "^10.13.6",
     "semantic-release": "^19.0.3",
     "svelte": "^3.49.0",
     "testcafe": "^1.19.0",
