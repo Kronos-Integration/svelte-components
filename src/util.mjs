@@ -9,5 +9,6 @@ export function connectionPath(from, to) {
   const tx = to.x + to.owner.x;
   const ty = to.y + to.owner.y;
 
-  return `M${fx} ${fy}H${fx + from.rx}V${ty}H${tx + 2}`;
+  const rx = from.rx === undefined ? 16 : from.rx; //TODO why
+  return `M${fx} ${fy}H${fx + rx}V${ty}H${tx + 2}`;
 }
