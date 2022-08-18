@@ -25,10 +25,13 @@ export class ServiceProvider extends ServiceProviderMixin(
   MockService,
   MockLogger
 ) {
+  subscriptions = new Set();
+  requests = [];
+  width = 500;
+  height = 500;
+
   constructor(serviceStore, requestsStore) {
     super({}, new NoneWaitingInitializationContext());
-    this.subscriptions = new Set();
-    this.requests = [];
 
     if (serviceStore) {
       this.serviceStore = serviceStore;
@@ -39,9 +42,6 @@ export class ServiceProvider extends ServiceProviderMixin(
       this.requestsStore = requestsStore;
       requestsStore.subscribe(request => this.addRequest(request));
     }
-
-    this.width = 500;
-    this.height = 500;
   }
 
   subscribe(cb) {
@@ -51,9 +51,7 @@ export class ServiceProvider extends ServiceProviderMixin(
   }
 
   fireSubscriptions() {
-    if (this.subscriptions) {
-      this.subscriptions.forEach(s => s(this));
-    }
+    this.subscriptions.forEach(s => s(this));
   }
 
   async initialize(json) {
