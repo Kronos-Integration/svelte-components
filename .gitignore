@@ -1,6 +1,7 @@
 /node_modules/**
 *.log
 *.dump
+dist
 build
 .DS_Store
 *.node
