@@ -64,7 +64,7 @@
       "${nginx.sites.dir}${name}.conf": "pkg/nginx.conf"
     },
     "example": true,
-    "fronetnd": true,
+    "frontend": true,
     "name": "kronos-svelte-components"
   },
   "release": {
