@@ -7,3 +7,4 @@ doc
 .github
 pkg
 vite.config.mts
+dist
