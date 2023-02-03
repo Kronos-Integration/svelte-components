@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    {{html.base.href}}
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{description}}"/>
     <script defer src="./index.mjs" type="module"></script>
     <link rel="stylesheet" href="./main.css" />
-    <title>{{name}} {{version}} Example</title>
+    <title>{{name}}@{{version}} Example</title>
   </head>
+
+  <script
+    src="https://unpkg.com/@github/tab-container-element@latest/dist/index.js"
+    type="module"
+  ></script>
 </html>
