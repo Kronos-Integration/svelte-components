@@ -33,7 +33,7 @@
   "dependencies": {
     "@kronos-integration/endpoint": "^9.4.42",
     "@kronos-integration/service": "^10.4.45",
-    "svelte-guard-history-router": "^5.5.28"
+    "svelte-guard-history-router": "^5.5.29"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^9.0.2",
