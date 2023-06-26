@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@kronos-integration/endpoint": "^9.4.42",
-    "@kronos-integration/service": "^10.4.45",
+    "@kronos-integration/service": "^10.4.46",
     "svelte-guard-history-router": "^5.5.37"
   },
   "devDependencies": {
