@@ -12,11 +12,11 @@ export class MockService extends Service {
   }
 
   get state() {
-    return this.config ? this.config.state : super.state;
+    return this.config?.state || super.state;
   }
 
   get type() {
-    return this.config ? this.config.type : super.type;
+    return this.config?.type || super.type;
   }
 
   instantiateInterceptor(def) {
