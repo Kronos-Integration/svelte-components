@@ -33,14 +33,7 @@ export class ServiceProvider extends ServiceProviderMixin(
   constructor(serviceStore, requestsStore) {
     super({}, new NoneWaitingInitializationContext());
 
-    for (const service of Object.values(this.services)) {
-      service.x = 0;
-      service.y = 0;
-      for (const endpoint of Object.values(service.endpoints)) {
-        endpoint.x = 0;
-        endpoint.y = 0;
-      }
-    }
+    this.layout();
 
     if (serviceStore) {
       this.serviceStore = serviceStore;
@@ -63,9 +56,8 @@ export class ServiceProvider extends ServiceProviderMixin(
     this.subscriptions.forEach(s => s(this));
   }
 
-  async initialize(json) {
-    await this.declareServices(json);
-
+  layout()
+  {
     let cx = 0;
     let y = 0;
 
@@ -94,7 +86,12 @@ export class ServiceProvider extends ServiceProviderMixin(
     }
 
     this.height = y;
+  }
 
+  async initialize(json) {
+    await this.declareServices(json);
+
+    this.layout();
     this.fireSubscriptions();
   }
 
@@ -112,11 +109,6 @@ export class ServiceProvider extends ServiceProviderMixin(
     for (const service of Object.values(this.services)) {
       for (const endpoint of Object.values(service.endpoints)) {
         for (const connection of endpoint.connections()) {
-          if (!connection.x || !connection.y || !endpoint.x || !endpoint.y) {
-            //console.log(endpoint.identifier, "no valid connection", connection);
-            continue;
-          }
-
           const key = endpoint.identifier + "-" + connection.identifier;
           if (!delivered.has(key)) {
             delivered.add(key);
