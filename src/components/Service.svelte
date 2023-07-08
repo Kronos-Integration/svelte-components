@@ -1,6 +1,5 @@
 <script>
   import {
-    getContext,
     setContext,
     createEventDispatcher,
     onMount
