@@ -33,6 +33,15 @@ export class ServiceProvider extends ServiceProviderMixin(
   constructor(serviceStore, requestsStore) {
     super({}, new NoneWaitingInitializationContext());
 
+    for (const service of Object.values(this.services)) {
+      service.x = 0;
+      service.y = 0;
+      for (const endpoint of Object.values(service.endpoints)) {
+        endpoint.x = 0;
+        endpoint.y = 0;
+      }
+    }
+
     if (serviceStore) {
       this.serviceStore = serviceStore;
       serviceStore.subscribe(services => this.initialize(services));
