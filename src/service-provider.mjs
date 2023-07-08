@@ -72,7 +72,7 @@ export class ServiceProvider extends ServiceProviderMixin(
         endpoint.y = ey;
 
         for (const connection of endpoint.connections()) {
-          cx = cx + 4;
+          cx += 4;
           connection.rx = cx;
         }
 
