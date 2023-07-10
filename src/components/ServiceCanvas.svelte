@@ -80,7 +80,7 @@
     <marker
       id="arrow"
       viewBox="0 0 8 8"
-      refX="6"
+      refX="2"
       refY="3"
       markerWidth="4"
       markerHeight="6"
