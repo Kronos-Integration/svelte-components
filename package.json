@@ -6,9 +6,9 @@
   },
   "exports": {
     ".": {
-      "svelte": "./src/index.svelte",
-      "services.css" : "./src/services.css"
-    }
+      "svelte": "./src/index.svelte"
+    },
+    "./css" : "./src/services.css"
   },
   "description": "Svelte components for Kronos",
   "keywords": [
