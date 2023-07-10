@@ -82,7 +82,7 @@
       viewBox="0 0 8 8"
       refX="6"
       refY="3"
-      markerWidth="6"
+      markerWidth="4"
       markerHeight="6"
       orient="auto-start-reverse"
     >
