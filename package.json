@@ -8,7 +8,7 @@
     ".": {
       "svelte": "./src/index.svelte"
     },
-    "./css" : "./src/services.css"
+    "./css": "./src/services.css"
   },
   "description": "Svelte components for Kronos",
   "keywords": [
@@ -38,7 +38,7 @@
   "dependencies": {
     "@kronos-integration/endpoint": "^9.4.42",
     "@kronos-integration/service": "^10.4.49",
-    "svelte-guard-history-router": "^6.0.3"
+    "svelte-guard-history-router": "^6.0.4"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^10.0.1",
@@ -50,7 +50,8 @@
     "semantic-release": "^21.0.7",
     "svelte": "^4.0.5",
     "testcafe": "^3.0.1",
-    "vite": "^4.4.2"
+    "vite": "^4.4.2",
+    "vite-plugin-compression2": "^0.10.3"
   },
   "optionalDependencies": {
     "mf-hosting-frontend": "^2.0.1"
