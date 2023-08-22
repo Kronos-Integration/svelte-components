@@ -51,7 +51,7 @@
     "svelte": "^4.0.5",
     "testcafe": "^3.0.1",
     "vite": "^4.4.2",
-    "vite-plugin-compression2": "^0.10.3"
+    "vite-plugin-compression2": "^0.10.4"
   },
   "optionalDependencies": {
     "mf-hosting-frontend": "^2.0.2"
