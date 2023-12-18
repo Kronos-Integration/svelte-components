@@ -11,7 +11,7 @@ jobs:
           - 20.10.0
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4.0.1
         with:
           node-version: ${{ matrix.node-version }}
       - run: rm package-lock.json
