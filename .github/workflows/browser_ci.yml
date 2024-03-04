@@ -8,6 +8,8 @@ on:
     branches:
       - master
       - next
+permissions:
+  contents: read
 jobs:
   test:
     runs-on: ${{ matrix.os }}
@@ -16,7 +18,6 @@ jobs:
         os:
           - ubuntu-latest
         node-version:
-          - 18.18.2
           - 20.11.1
         browser:
           - chrome
@@ -40,6 +41,11 @@ jobs:
     needs:
       - test
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
     steps:
       - name: Dependencies
         run: >
@@ -64,10 +70,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PKGBUILD_PUBLISH: ${{ secrets.PKGBUILD_PUBLISH }}
           PKGEXT: .pkg.tar.xz
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-      id-token: write
-permissions:
-  contents: read
+
+
