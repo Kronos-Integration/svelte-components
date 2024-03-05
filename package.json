@@ -55,7 +55,7 @@
     "vite-plugin-compression2": "^1.0.0"
   },
   "optionalDependencies": {
-    "mf-hosting-frontend": "^2.2.5"
+    "mf-hosting-frontend": "^2.2.6"
   },
   "repository": {
     "type": "git",
