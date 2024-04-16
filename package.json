@@ -48,11 +48,11 @@
     "@semantic-release/release-notes-generator": "^13.0.0",
     "@sveltejs/vite-plugin-svelte": "^3.1.0",
     "documentation": "^14.0.3",
-    "npm-pkgbuild": "^15.2.4",
+    "npm-pkgbuild": "^15.2.5",
     "semantic-release": "^23.0.8",
     "svelte": "^4.2.14",
     "testcafe": "^3.5.0",
-    "vite": "^5.2.8",
+    "vite": "^5.2.9",
     "vite-plugin-compression2": "^1.0.0"
   },
   "optionalDependencies": {
