@@ -19,7 +19,10 @@
 <g
   id={endpoint.identifier}
   class="endpoint"
+  tabindex="0"
+  role="button"
   on:click={click}
+  on:keydown={click}
   transform="translate({endpoint.x},{endpoint.y})"
 >
   <text x="-6px" y="1px">{endpoint.name}</text>

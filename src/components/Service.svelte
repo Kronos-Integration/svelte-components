@@ -50,7 +50,10 @@
   id={service.name}
   class="service"
   transform="translate({service.x},{service.y})"
+  role="button"
+  tabindex="0"
   on:click={click}
+  on:keydown={click}
 >
   <rect width={service.w} height={service.h} rx="4" />
   <text x="8" y="14">{service.name}</text>

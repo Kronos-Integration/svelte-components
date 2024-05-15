@@ -27,4 +27,12 @@
     : "#interceptor";
 </script>
 
-<use {href} {x} {y} on:click={click} />
+<use
+  {href}
+  {x}
+  {y}
+  on:click={click}
+  on:keydown={click}
+  tabindex="0"
+  role="button"
+/>
