@@ -31,8 +31,8 @@
   {href}
   {x}
   {y}
-  on:click={click}
-  on:keydown={click}
+  onclick={click}
+  onkeydown={click}
   tabindex="0"
   role="button"
 />
