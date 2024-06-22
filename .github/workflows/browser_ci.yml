@@ -19,7 +19,6 @@ jobs:
           - ubuntu-latest
         node-version:
           - 20.15.0
-          - 20.15.0
         browser:
           - chrome
     steps:
