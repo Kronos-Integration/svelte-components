@@ -1,24 +1,15 @@
 <script>
   import {
     setContext,
-    createEventDispatcher,
     onMount
   } from "svelte";
   import { SERVICE, connectionPath } from "../util.mjs";
   import { makeDraggable } from "../dragging.mjs";
   import Endpoint from "./Endpoint.svelte";
 
-  export let service;
+  let { service, serviceAction, endpointAction, interceptorAction } = $props();
 
   setContext(SERVICE, service);
-
-  const dispatch = createEventDispatcher();
-
-  function click(event) {
-    dispatch("serviceAction", {
-      service
-    });
-  }
 
   let element;
 
@@ -52,12 +43,12 @@
   transform="translate({service.x},{service.y})"
   role="button"
   tabindex="0"
-  onclick={click}
-  onkeydown={click}
+  onclick={serviceAction}
+  onkeydown={serviceAction}
 >
   <rect width={service.w} height={service.h} rx="4" />
   <text x="8" y="14">{service.name}</text>
   {#each Object.values(service.endpoints) as endpoint}
-    <Endpoint on:endpointAction on:interceptorAction {endpoint} />
+    <Endpoint {endpoint} {endpointAction} {interceptorAction} />
   {/each}
 </g>

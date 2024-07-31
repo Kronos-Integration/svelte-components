@@ -6,15 +6,9 @@
   import Request from "./Request.svelte";
   import { getAttributes } from "model-attributes";
 
-  export let services;
+  let { services } = $props();
 
   setContext(SERVICES, services);
-
-  let s;
-
-  $: {
-    s = $services;
-  }
 
   function serviceAction(event) {
     services.serviceStore.set({
@@ -47,7 +41,7 @@
   }
 </script>
 
-<svg viewbox="0 0 {s.width} {s.height}">
+<svg viewbox="0 0 {services.width} {services.height}">
   <defs>
     <symbol id="interceptor" y="-3">
       <path d="M0 -3L6 6L0 6L6 -3z" />
@@ -101,24 +95,24 @@
   </defs>
 
   <g class="services">
-    {#each Object.values(s.services) as service}
+    {#each Object.values(services.services) as service}
       <Service
         {service}
-        on:endpointAction={endpointAction}
-        on:interceptorAction={interceptorAction}
-        on:serviceAction={serviceAction}
+        {endpointAction}
+        {interceptorAction}
+        {serviceAction}
       />
     {/each}
   </g>
 
   <g class="connections">
-    {#each s.connections as [from, to]}
+    {#each services.connections as [from, to]}
       <Connection {from} {to} />
     {/each}
   </g>
 
   <g class="requests">
-    {#each s.requests as request}
+    {#each services.requests as request}
       <Request {request} />
     {/each}
   </g>

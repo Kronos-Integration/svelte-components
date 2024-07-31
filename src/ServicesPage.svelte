@@ -1,5 +1,5 @@
 <script>
-  export let router;
+  let { router } = $props();
 
   const route = router.route;
   const services = $route.value;

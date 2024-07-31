@@ -1,7 +1,6 @@
 <script>
   import { connectionPath } from "../util.mjs";
-  export let from;
-  export let to;
+  let { to, from } = $props();
 </script>
 
 <path

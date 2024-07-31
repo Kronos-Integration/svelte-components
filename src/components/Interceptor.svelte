@@ -1,19 +1,10 @@
 <script>
-  import { setContext, createEventDispatcher } from "svelte";
+  import { setContext } from "svelte";
   import { INTERCEPTOR } from "../util.mjs";
 
-  export let interceptor;
-  export let x;
-  export let y;
+  let { interceptor, x, y, interceptorAction } = $props();
+
   setContext(INTERCEPTOR, interceptor);
-
-  const dispatch = createEventDispatcher();
-
-  function click(event) {
-    dispatch("interceptorAction", {
-      interceptor
-    });
-  }
 
   const knownInterceptorTypes = new Set([
     "live-probe",
@@ -31,8 +22,8 @@
   {href}
   {x}
   {y}
-  onclick={click}
-  onkeydown={click}
+  onclick={interceptorAction}
+  onkeydown={interceptorAction}
   tabindex="0"
   role="button"
 />

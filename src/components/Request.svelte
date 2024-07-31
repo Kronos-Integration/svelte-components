@@ -1,5 +1,5 @@
 <script>
-  export let request;
+  let { request } = $props();
 
   const owner = request.endpoint.owner;
   const x = owner.x + request.endpoint.x + 20;
