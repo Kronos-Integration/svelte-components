@@ -56,8 +56,7 @@ export class ServiceProvider extends ServiceProviderMixin(
     this.subscriptions.forEach(s => s(this));
   }
 
-  layout()
-  {
+  layout() {
     let cx = 0;
     let y = 0;
 
