@@ -3,9 +3,7 @@
   import { ServiceCanvas, ServiceProvider } from "../../../src/index.svelte";
   import { data } from "./data.mjs";
 
-  export const serviceData = writable(data /*, command => {
-    console.log(command);
-  }*/);
+  export const serviceData = writable(data);
   const services = new ServiceProvider(serviceData);
 </script>
 
