@@ -11,10 +11,14 @@
   setContext(SERVICES, services);
 
   function serviceAction(event) {
-    services.serviceStore.set({
-      service: event.detail.service.name,
-      action: "start"
-    });
+    const service = event.detail?.service?.name;
+
+    if (service) {
+      services.serviceStore.set({
+        service,
+        action: "start"
+      });
+    }
   }
 
   function endpointAction(event) {
@@ -96,12 +100,7 @@
 
   <g class="services">
     {#each Object.values(services.services) as service}
-      <Service
-        {service}
-        {endpointAction}
-        {interceptorAction}
-        {serviceAction}
-      />
+      <Service {service} {endpointAction} {interceptorAction} {serviceAction} />
     {/each}
   </g>
 
