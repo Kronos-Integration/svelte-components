@@ -19,7 +19,6 @@ export const data = {
           "service(http).log",
           "service(ldap).log",
           "service(logger).log",
-          "service(logger).log",
           "service(smtp).log",
           "service(systemd).log"
         ]
