@@ -60,7 +60,7 @@
     "svelte": "^5.0.0-next.0"
   },
   "optionalDependencies": {
-    "mf-hosting-frontend": "^3.4.0"
+    "mf-hosting-frontend": "^3.5.1"
   },
   "repository": {
     "type": "git",
