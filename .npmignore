@@ -6,5 +6,12 @@ doc
 .vscode
 .github
 pkg
+playwright.config.js
 vite.config.mts
 dist
+.last-run.json
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
