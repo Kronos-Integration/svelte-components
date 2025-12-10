@@ -7,4 +7,10 @@ build
 .DS_Store
 *.node
 .test
+/playwright/.auth/
 .tmp
+.last-run.json
+/playwright-report/
+/test-results/
+/blob-report/
+/playwright/.cache/
