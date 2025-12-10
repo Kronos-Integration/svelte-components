@@ -4,7 +4,7 @@
   import Service from "./Service.svelte";
   import Connection from "./Connection.svelte";
   import Request from "./Request.svelte";
-  import { getAttributes } from "model-attributes";
+  import { getAttributes } from "pacc";
 
   let { services } = $props();
 

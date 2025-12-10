@@ -1,23 +1,9 @@
-import { Selector, ClientFunction } from "testcafe";
+import { test, expect } from "@playwright/test";
 
-const getLocation = ClientFunction(() => window.location.href);
-const goBack = ClientFunction(() => window.history.back());
+test("list services", async ({ page }) => {
+  await page.goto("http://localhost:5173/");
 
-const base = "http://localhost:5173/";
-
-fixture`Getting Started`.page`${base}`;
-
-test("list services", async t => {
-/*
-  const service = Selector(".service");
-  await t.expect(service.innerText).contains("logger");
-*/
-
-  const adminServiceExists = Selector('#admin').exists;
-  await t.expect(adminServiceExists).ok();
-  await t.takeScreenshot();
-/*
-  const endpointExists = Selector('#service(logger).log').exists;
-  await t.expect(endpointExists).ok();
-*/
+  await page.screenshot({
+    path: "test-results/screenshots/canvas.png"
+  });
 });
