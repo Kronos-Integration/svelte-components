@@ -42,7 +42,7 @@
     "@kronos-integration/endpoint": "^11.0.7",
     "@kronos-integration/service": "^15.4.1",
     "pacc": "^6.6.2",
-    "svelte-guard-history-router": "^7.0.5"
+    "svelte-guard-history-router": "^7.0.6"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
