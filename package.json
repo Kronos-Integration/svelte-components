@@ -41,7 +41,7 @@
   "dependencies": {
     "@kronos-integration/endpoint": "^11.0.11",
     "@kronos-integration/service": "^15.4.7",
-    "pacc": "^8.0.2",
+    "pacc": "^8.0.3",
     "svelte-guard-history-router": "^7.0.7"
   },
   "devDependencies": {
@@ -63,7 +63,7 @@
     "svelte": "^5.46.0"
   },
   "optionalDependencies": {
-    "mf-hosting-frontend": "^3.9.11"
+    "mf-hosting-frontend": "^3.9.12"
   },
   "repository": {
     "type": "git",
