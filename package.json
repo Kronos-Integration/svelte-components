@@ -41,7 +41,7 @@
   "dependencies": {
     "@kronos-integration/endpoint": "^11.0.15",
     "@kronos-integration/service": "^15.4.12",
-    "pacc": "^8.1.6",
+    "pacc": "^8.1.7",
     "svelte-guard-history-router": "^7.0.11"
   },
   "devDependencies": {
