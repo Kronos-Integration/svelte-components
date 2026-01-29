@@ -39,10 +39,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@kronos-integration/endpoint": "^11.0.14",
-    "@kronos-integration/service": "^15.4.11",
-    "pacc": "^8.1.4",
-    "svelte-guard-history-router": "^7.0.10"
+    "@kronos-integration/endpoint": "^11.0.15",
+    "@kronos-integration/service": "^15.4.12",
+    "pacc": "^8.1.5",
+    "svelte-guard-history-router": "^7.0.11"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.0",
