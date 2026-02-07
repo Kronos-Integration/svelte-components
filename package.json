@@ -75,7 +75,7 @@
   "homepage": "https://github.com/Kronos-Integration/svelte-components#readme",
   "pkgbuild": {
     "content": {
-      "${install.dir}": "build/"
+      "${install_dir}": "build/"
     },
     "example": true,
     "frontend": true,
