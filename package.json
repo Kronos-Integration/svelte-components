@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@kronos-integration/endpoint": "^11.0.24",
-    "@kronos-integration/service": "^15.4.28",
+    "@kronos-integration/service": "^15.4.29",
     "pacc": "^8.11.6",
     "svelte-guard-history-router": "^7.0.15"
   },
@@ -48,7 +48,7 @@
     "@playwright/test": "^1.58.2",
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/exec": "^7.1.0",
-    "@semantic-release/github": "^12.0.5",
+    "@semantic-release/github": "^12.0.6",
     "@semantic-release/release-notes-generator": "^14.1.0",
     "@sveltejs/vite-plugin-svelte": "^6.2.4",
     "documentation": "^14.0.3",
