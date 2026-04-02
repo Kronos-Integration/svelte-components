@@ -45,7 +45,7 @@
     "svelte-guard-history-router": "^7.0.20"
   },
   "devDependencies": {
-    "@playwright/test": "^1.58.2",
+    "@playwright/test": "^1.59.0",
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/github": "^12.0.6",
@@ -53,9 +53,9 @@
     "@sveltejs/vite-plugin-svelte": "^7.0.0",
     "documentation": "^14.0.3",
     "npm-pkgbuild": "^20.6.4",
-    "playwright": "^1.58.2",
+    "playwright": "^1.59.0",
     "semantic-release": "^25.0.3",
-    "svelte": "^5.55.0",
+    "svelte": "^5.55.1",
     "vite": "^8.0.3",
     "vite-plugin-compression2": "^2.5.3"
   },
