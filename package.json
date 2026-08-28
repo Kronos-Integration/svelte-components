@@ -39,8 +39,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@kronos-integration/endpoint": "^11.2.0",
-    "@kronos-integration/service": "^15.7.22",
+    "@kronos-integration/endpoint": "^11.2.3",
+    "@kronos-integration/service": "^15.7.23",
     "pacc": "^11.6.0",
     "svelte-guard-history-router": "^7.0.26"
   },
@@ -63,7 +63,7 @@
     "svelte": "^5.56.0"
   },
   "optionalDependencies": {
-    "mf-hosting-frontend": "^4.0.9"
+    "mf-hosting-frontend": "^4.1.0"
   },
   "repository": {
     "type": "git",
