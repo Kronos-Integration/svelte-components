@@ -52,10 +52,10 @@
     "@semantic-release/release-notes-generator": "^14.1.1",
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
     "documentation": "^14.0.3",
-    "npm-pkgbuild": "^22.2.18",
+    "npm-pkgbuild": "^22.2.20",
     "playwright": "^1.62.1",
     "semantic-release": "^25.0.9",
-    "svelte": "^5.57.1",
+    "svelte": "^5.57.2",
     "vite": "^8.3.3",
     "vite-plugin-compression2": "^2.5.3"
   },
